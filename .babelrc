@@ -1,0 +1,31 @@
+{
+	"presets" : [
+		'es2015', 
+		'es2017', 
+		'stage-3', 
+		'react'
+	] , 
+	"plugins" : [
+		["module-resolver", {
+			"root": ["./workspace"],
+			"alias": {
+				"test": "./test", 
+				"gulp_setting" : "./gulp" 
+			}
+		}] , 
+		'transform-decorators-legacy', 
+		'transform-class-properties' ,
+		'transform-async-to-generator' , 
+		'transform-object-assign' , 
+		'transform-regenerator' , 
+		[
+			"transform-runtime", 
+			{
+				"helpers": false, // defaults to true 
+				"polyfill": false, // defaults to true 
+				"regenerator": true, // defaults to true 
+				"moduleName": "babel-runtime" // defaults to "babel-runtime" 
+			}
+		]
+	]
+}

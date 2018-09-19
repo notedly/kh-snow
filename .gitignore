@@ -1,0 +1,9 @@
+node_modules
+dist
+app
+*~
+.DS_store
+.gulp-cache
+html_build
+html/css/
+js_min
