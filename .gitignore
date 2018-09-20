@@ -1,13 +1,15 @@
+#default
 node_modules
 dist
 app
 *~
 .DS_store
 .gulp-cache
-js_min
 
+#workspace
 workspace/build/
 workspace/src/server/Dir.js
 
+#Logs
+*.log
 npm-debug.log*
-aaa/
