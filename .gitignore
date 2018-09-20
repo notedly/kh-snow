@@ -4,6 +4,10 @@ app
 *~
 .DS_store
 .gulp-cache
-html_build
-html/css/
 js_min
+
+workspace/build/
+workspace/src/server/Dir.js
+
+npm-debug.log*
+aaa/

@@ -9,7 +9,7 @@ const server = () => {
 	return new Promise( ( resolve , reject ) => {
 		gulp.src( `${ PATH.appRoot }/${ PATH.SRC.SERVER }/**/*.js` )
 			.pipe( babel({
-				"presets" : ['es2015', 'es2017', 'stage-3'],
+				"presets" : ['es2015', 'es2017', 'stage-3' , 'react'],
 				"plugins" : [
 					'transform-decorators-legacy', 
 					'transform-class-properties' ,
@@ -32,9 +32,10 @@ const server = () => {
 const nodemonSet = () => {	
 	return new Promise( ( resolve , reject ) => {
 		console.log( '\n\n[ nodemonSet ]' ) ; 
+		console.log( PATH.appRoot + '\\build\\server\\' + 'app.js' ) ; 
 		nodemon({
-			script : PATH.appRoot + '/build/server/' + 'app.js' , 
-			watch : PATH.appRoot + '/build/server' 
+			script : PATH.appRoot + '\\build\\server\\' + 'app.js' , 
+			watch : PATH.appRoot + '\\build\\server' 
 		}) ; 
 
 		resolve () ; 

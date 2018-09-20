@@ -24,4 +24,6 @@ const PATH = {
 	}
 } ; 
 
+console.log( '- origin PATH : ' , PATH ) ; 
+
 export default PATH ; 

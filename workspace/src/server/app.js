@@ -1,8 +1,6 @@
 import express from 'express' ; 
 import PATH from './Dir' ; 
 
-console.log( 'PATH : ' , PATH ) ; 
-
 const app = express() ; 
 app.set( 'views' , `/${ PATH.appRoot }/build` ) ; 
 app.set( 'view engine' , 'ejs' ) ; 

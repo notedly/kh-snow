@@ -15,16 +15,17 @@ const dirSet = () => {
 				console.log( file ) ; 
 
 				if ( file == 'Dir.js' ) {
-					let evt = {
+					/*let evt = {
 						path : `${ PATH.appRoot }\\` , 
 						fileName : file , 
-						dest : `${ PATH.appRoot }/${ PATH.DEST.SERVER }` , 
-					} ; 
+						dest : `${ PATH.appRoot }/${ PATH.DIR.DEST }` , 
+					} ; */
 
 					gulp.src( `${ PATH.appRoot }/${ file }` )
-						.pipe( gulp.dest( `${ PATH.appRoot}/${ PATH.DIR.SRC }` ) ) ; 
+						.pipe( gulp.dest( `${ PATH.appRoot}/${ PATH.SRC.SERVER }` ) )
+						.on( 'finish' , resolve ) ; 
 
-					webpackCompile( evt , resolve ) ; 
+					// webpackCompile( evt , resolve ) ; 
 				}
 			}) ; 
 		}) ; 

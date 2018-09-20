@@ -10,7 +10,8 @@
 			"root": ["./workspace"],
 			"alias": {
 				"test": "./test", 
-				"gulp_setting" : "./gulp" 
+				"gulp_setting" : "./gulp" , 
+				"build" : "./workspace/build" , 
 			}
 		}] , 
 		'transform-decorators-legacy', 
