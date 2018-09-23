@@ -3,6 +3,7 @@ import sass from 'gulp-sass' ;
 import Cache from 'gulp-file-cache' ; 
 import cleanCSS from 'gulp-clean-css' ; 
 import PATH from 'Dir' ; 
+import browserSync from 'browser-sync' ; 
 
 const scss = () => {
 	console.log( '\n\n[ scss ]' ) ; 
@@ -44,7 +45,7 @@ const scss = () => {
 		async function tmp () {
 			await sassSet() ; 
 			await css() ; 
-			console.log( 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' ) ; 
+			browserSync.reload() ; 
 		}
 		tmp() ; 
 	}) ; 

@@ -1,10 +1,8 @@
 import gulp from 'gulp' ; 
-/*const watch = () => {
-	console.log( '\n\n[ watch ]' ) ; 
-} ; */
 
 import scss from './watch/scss' ; 
+import js from './watch/js' ; 
 
-const watch = gulp.series( scss ) ; 
+const watch = gulp.parallel( scss , js ) ; 
 
 export default watch ; 
