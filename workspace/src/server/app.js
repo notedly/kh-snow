@@ -5,6 +5,13 @@ import ReactDOMServer from 'react-dom/server';
 import express from 'express' ; 
 import PATH from './Dir' ; 
 
+import TestApp from 'src/js/test' ; 
+
+let TestApp2 = 'bbb' ; 
+
+console.log( 'TestApp : ' , TestApp ) ; 
+console.log( 'TestApp2 : ' , TestApp2 ) ; 
+
 const app = express() ; 
 app.set( 'views' , `/${ PATH.appRoot }/build` ) ; 
 app.set( 'view engine' , 'ejs' ) ; 

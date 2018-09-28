@@ -11,6 +11,7 @@
 			"alias": {
 				"test": "./test", 
 				"gulp_setting" : "./gulp" , 
+				"src" : "./workspace/src" , 
 				"build" : "./workspace/build" , 
 			}
 		}] , 
