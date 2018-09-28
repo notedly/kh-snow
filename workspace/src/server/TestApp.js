@@ -1,4 +1,4 @@
-/*import react , { Component } from 'react' ; 
+import react , { Component } from 'react' ; 
 
 class TestApp extends Component {
 	consrurctor () {}
@@ -8,10 +8,5 @@ class TestApp extends Component {
 		) ; 
 	}
 }
-
-export default TestApp ; */
-
-
-let TestApp = 'aaaaaaaaaa'; 
 
 export default TestApp ; 

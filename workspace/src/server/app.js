@@ -1,32 +1,24 @@
-import ejs from 'ejs' ; 
-import fs from 'fs' ; 
-import React from 'react' ; 
-import ReactDOMServer from 'react-dom/server';
 import express from 'express' ; 
 import PATH from './Dir' ; 
 
-import TestApp from 'src/js/test' ; 
-
-let TestApp2 = 'bbb' ; 
-
-console.log( 'TestApp : ' , TestApp ) ; 
-console.log( 'TestApp2 : ' , TestApp2 ) ; 
+// Routes
+import Index from './routes/Index' ; 
 
 const app = express() ; 
-app.set( 'views' , `/${ PATH.appRoot }/build` ) ; 
+// app.set( 'views' , `${ PATH.appRoot }/../` ) ; 
+app.set( 'views' , `${ PATH.appRoot }/../` ) ; 
 app.set( 'view engine' , 'ejs' ) ; 
 app.engine( 'html' , require( 'ejs' ).renderFile ) ;  
-app.use( '/' , express.static( `/${ PATH.appRoot }/build` )) ; 
+app.use( '/' , express.static( `${ PATH.appRoot }/../` )) ; 
 
-app.get( '/' , ( req , res ) => {
+console.log( `${ PATH.appRoot }/../` ) ; 
 
-	let template = ejs.compile(fs.readFileSync(__dirname + '/template/default.ejs', 'utf8'));
-	res.send(template({
-		title : 'yaho' , 
-	})) ; 
-}) ; 
+// app.set('views', path.join(__dirname, '/../views'));
+// app.set('view engine', 'ejs');
 
+
+app.use( '/' , Index ) ; 
 
 const server = app.listen( PATH.PORT , () => {
-	console.log( 'Express listening on port : ' +  server.address().port ) ;
+	console.log( 'Express listening on port : ' +  server.address().port ) ; 
 }) ; 

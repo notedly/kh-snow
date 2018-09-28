@@ -1,16 +1,19 @@
+import 'babel-polyfill';
 import gulp from 'gulp' ; 
-import fs from 'fs' ; 
+import Cache from 'gulp-file-cache' ; 
 import babel from 'gulp-babel' ; 
-import nodemon from 'gulp-nodemon' ; 
 import PATH from 'Dir' ; 
+import browserSync from 'browser-sync' ; 
 
-const server = () => {	
-	console.log( '\n\n[ server ]' ) ; 
+const server = ( path ) => {	
+	console.log( '\n\n[ watch server ]' ) ; 
 	return new Promise( ( resolve , reject ) => {
-		gulp.src([
+		let compilePath = path || [
 			`${ PATH.appRoot }/${ PATH.SRC.SERVER }/**/*.js` , 
 			`!${ PATH.appRoot }/${ PATH.SRC.SERVER }/{template,template/**}` 
-			])
+		] ; 
+
+		gulp.src( compilePath )
 			.pipe( babel({
 				"presets" : ['es2015', 'es2017', 'stage-3' , 'react'],
 				"plugins" : [
@@ -34,26 +37,28 @@ const server = () => {
 
 const template = () => {
 	return new Promise( ( resolve , reject ) => {
-		console.log( '\n\n[ template ]' ) ; 
+		console.log( '\n\n[ watch template ]' ) ; 
 		gulp.src( `${ PATH.appRoot }/${ PATH.SRC.SERVER }/template/**` )
 			.pipe( gulp.dest( `${ PATH.appRoot }/${ PATH.DEST.SERVER }/template`) )
 			.on( 'finish' , resolve ) ; 
 	}) ;
 } ; 
 
-const nodemonSet = () => {	
-	return new Promise( ( resolve , reject ) => {
-		console.log( '\n\n[ nodemonSet ]' ) ; 
-		console.log( PATH.appRoot + '\\build\\server\\' + 'app.js' ) ; 
-		nodemon({
-			script : PATH.appRoot + '\\build\\server\\' + 'app.js' , 
-			watch : PATH.appRoot + '\\build\\server' 
-		}) ; 
+const serverSet = () => {
+	console.log( '\n\n[ watch serverSet ]' ) ; 
 
-		resolve () ; 
-	}) ;
-} ;
+	gulp.watch( `${ PATH.appRoot }/${ PATH.SRC.SERVER }/**/*` ).on( 'all' , ( evt , path , stats ) => {
+		console.log( 'evt' , evt ) ; 
+		console.log( 'path' , path ) ; 
 
-const serverSet = gulp.series( server , template , nodemonSet ) ; 
+		async function tmp () {
+			await server() ; 
+			await template() ; 
+			browserSync.reload() ; 
+		}
+		tmp() ; 
+	}) ; 
+} ; 
 
-export default serverSet ;  
+export default serverSet  ; 
+export { server } ; 

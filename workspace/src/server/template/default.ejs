@@ -2,11 +2,19 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title><%- title %></title>
+	<meta name="description" content="개자이너 블로그 입니다. 공부한것들을 공유하기위해 만들었습니다.">
+	<meta property="og:type" content="Website">
+	<meta property="og:title" content="개자이너 블로그">
+	<meta property="og:description" content="<%= typeof description != 'undefined' ? description : 'sssssssssss' %>">
+	<meta property="og:image" content="http://www.gaesignerblog.com/images/gaesigner_400x400.jpg">
+	<meta property="og:url" content="http://www.gaesignerblog.com/post/3">	
+	<title><%= typeof title !='undefined' ? title : 'Welcome to the Gaesigner Blog' %></title>
+	<link rel="stylesheet" type="text/css" href="<%= css %>">
 </head>
 <body>
 
-	yaho
-	
+	<%- body %>
+	<%- //include ./test.ejs %>
+
 </body>
 </html>

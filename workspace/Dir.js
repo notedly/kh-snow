@@ -13,7 +13,7 @@ const PATH = {
 		IMAGES : `${ DIR.SRC }\\images` , 
 		CSS : `${ DIR.SRC }\\css` , 
 		SCSS : `${ DIR.SRC }\\scss` , 
-		EJS : `${ DIR.SRC }\\` , 
+		EJS : `${ DIR.SRC }` , 
 	} , 
 	DEST : {
 		JS : `${ DIR.DEST }/js` , 
