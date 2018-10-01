@@ -10,13 +10,19 @@
 	<meta property="og:url" content="http://www.gaesignerblog.com/post/3">	
 	<title><%= typeof title !='undefined' ? title : 'Welcome to the Gaesigner Blog' %></title>
 	<link rel="stylesheet" type="text/css" href="<%= css %>">
+	<script src="<%= js %>"></script>
 </head>
 <body>
 
 	<%- body %>
-	<% //include ./test.ejs %>
+
+	<% var rootPath = '/xampp/htdocs/home/gulp-default_renew/workspace/build/'; %>
+	<%= rootPath %>
+	<%- include( rootPath + 'test' ) ; %>
+	<%- //include( 'test' ) %>
 	<% //include('test', { user : 'ssss' }); %>
-	/jjackkun_folder/works/gulp-default_renew/workspace/src/
+
+
 
 </body>
 </html>
