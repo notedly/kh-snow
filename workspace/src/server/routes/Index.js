@@ -11,18 +11,13 @@ const Index = Router() ;
 
 Index.get( '/' , ( req , res ) => {
 	const contentApp = renderToString( <IndexContainer /> );
-	const template = ejs.compile(fs.readFileSync( __dirname + '/../template/default.ejs', 'utf8')) ; 
-
-	console.log( '__dirname : ' , __dirname ) ; 
-
-	res.send(template({
-		// title : 'Welcome to the Gaesigner Blog' , 
+	res.render( 'index' , {
+		title : 'Welcome to the Gaesigner Blog' , 
 		description : '개발지식을 공유하고싶어요' , 
 		css : 'css/index.css' , 
 		js : 'js/indexTest.js' , 
 		body : contentApp , 
-	})) ; 
+	}) ; 
 }) ; 
-
 
 export default Index ; 

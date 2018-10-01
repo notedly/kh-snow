@@ -16,9 +16,9 @@ const js = () => {
 
 				console.log( 'evt : ' , evt ) ; 
 				console.log( 'path : ' , path ) ; 
-				let destPath = path.substr( 0 , path.lastIndexOf( '\\') ) ; 
+				let destPath = path.substr( 0 , path.lastIndexOf( '\\' ) ) ; 
 				destPath = destPath.replace( 'workspace\\src' , 'workspace\\build' ) ; 
-				console.log( 'destPath : ' , destPath ) ; 
+				// console.log( 'destPath : ' , destPath ) ; 
 
 				gulp.src( path )
 					.pipe( babel({
@@ -45,40 +45,6 @@ const js = () => {
 						}
 						tmp() ; 
 					}) ; 
-
-				/*let evt = {
-					path : `${ PATH.appRoot }\\${ PATH.SRC.JS }\\` , 
-					fileName : file , 
-					dest : `${ PATH.appRoot }/${ PATH.DEST.JS }` , 
-				} ; 
-
-				console.log( 'evt : ' , evt ) ; 
-
-				gulp.src( `${ evt.path }/${ evt.fileName }` )
-					.pipe( babel({
-						"presets" : ['es2015', 'es2017', 'stage-3' , 'react'],
-						"plugins" : [
-							'transform-decorators-legacy', 
-							'transform-class-properties' ,
-							'transform-async-to-generator' , 
-							'transform-object-assign' , 
-							'transform-regenerator' , 
-							["transform-runtime", {
-								"helpers": false, // defaults to true 
-								"polyfill": false, // defaults to true 
-								"regenerator": true, // defaults to true 
-								"moduleName": "babel-runtime" // defaults to "babel-runtime" 
-							}]
-						],
-					}))
-					.pipe( gulp.dest( evt.dest ) )
-					.on( 'finish' , () => {
-						async function tmp () {
-							await server( `${ PATH.appRoot }/${ PATH.SRC.SERVER }/app.js` ) ; 
-							browserSync.reload() ; 
-						}
-						tmp() ; 
-					}) ; */
 
 			// }) ; // end of forEach
 

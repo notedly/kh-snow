@@ -13,11 +13,6 @@ const server = ( path ) => {
 			`!${ PATH.appRoot }/${ PATH.SRC.SERVER }/{template,template/**}` 
 		] ; 
 
-		// C:\xampp\htdocs\home\gulp-default_renew\workspace\src\server\routes\Index.js
-		
-		let destPath = path.substr( 0 , path.lastIndexOf( '\\' ) ) ; 
-		destPath = destPath.replace( 'workspace\\src' , 'workspace\\build' ) ; 
-
 		gulp.src( compilePath )
 			.pipe( babel({
 				"presets" : ['es2015', 'es2017', 'stage-3' , 'react'],
@@ -35,7 +30,7 @@ const server = ( path ) => {
 					}]
 				],
 			}))
-			.pipe( gulp.dest( destPath ) )
+			.pipe( gulp.dest( `${ PATH.appRoot }/${ PATH.DEST.SERVER }` ) )
 			.on( 'finish' , resolve ) ; 
 	}) ;
 } ; 
@@ -53,11 +48,11 @@ const serverSet = () => {
 	console.log( '\n\n[ watch serverSet ]' ) ; 
 
 	gulp.watch( `${ PATH.appRoot }/${ PATH.SRC.SERVER }/**/*` ).on( 'all' , ( evt , path , stats ) => {
-		// console.log( 'evt' , evt ) ; 
+		console.log( 'evt' , evt ) ; 
 		console.log( 'path' , path ) ; 
 
 		async function tmp () {
-			await server( path ) ; 
+			await server() ; 
 			await template() ; 
 			browserSync.reload() ; 
 		}
