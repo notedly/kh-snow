@@ -17,7 +17,7 @@ const scss = () => {
 		const sassSet = () => {
 			console.log( '\n\n[ cssSet ]\n[ sassSet ]' ) ; 
 			return new Promise( resolve => {
-				gulp.src( path )
+				gulp.src( `${ PATH.appRoot }/${ PATH.SRC.SCSS }/*.scss` )
 					.pipe( cache.filter() )
 					.pipe( sass() )
 					.pipe( cache.cache() )
