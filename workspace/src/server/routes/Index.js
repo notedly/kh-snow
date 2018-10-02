@@ -1,4 +1,5 @@
 import fs from 'fs' ; 
+import client from './client' ; 
 import React , { Component } from 'react' ; 
 import express , { Router } from 'express'; 
 import { renderToString } from 'react-dom/server';
