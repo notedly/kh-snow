@@ -1,15 +1,13 @@
 import React , { Component } from 'react' ; 
-import Sub1 from './index/sub1' ; 
+import Top from './include/Top' ; 
 
 class IndexContainer extends Component {
 	consrurctor () {}
 	render () {
-		return (
-			<div>
-				IndexContainer In
-				<Sub1 />
-			</div>
-		) ; 
+		return ([
+			<Top key="Top" /> , 
+			<div>IndexContainer In</div> , 
+		]) ; 
 	}
 }
 

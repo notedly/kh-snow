@@ -10,6 +10,7 @@ const ejs = () => {
 			console.log( evt ) ; 
 			console.log( path ) ; 
 
+			path = path.replace( /\//g , '\\' ) ; 
 			let destPath = path.substr( 0 , path.lastIndexOf( '\\') ) ; 
 			destPath = destPath.replace( 'workspace\\src' , 'workspace\\build' ) ; 
 

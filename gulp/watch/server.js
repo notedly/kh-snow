@@ -13,10 +13,12 @@ const server = ( path ) => {
 			`!${ PATH.appRoot }/${ PATH.SRC.SERVER }/{template,template/**}` 
 		] ; 
 
-		// C:\xampp\htdocs\home\gulp-default_renew\workspace\src\server\routes\Index.js
-		
+		path = path.replace( /\//g , '\\' ) ; 
 		let destPath = path.substr( 0 , path.lastIndexOf( '\\' ) ) ; 
-		destPath = destPath.replace( 'workspace\\src' , 'workspace\\build' ) ; 
+		destPath = destPath.replace( 'workspace\\src' , 'workspace/build' ) ; 
+
+		// console.log( 'compilePath : ' , compilePath ) ; 
+		// console.log( 'destPath : ' , destPath ) ; 
 
 		gulp.src( compilePath )
 			.pipe( babel({
@@ -58,7 +60,7 @@ const serverSet = () => {
 
 		async function tmp () {
 			await server( path ) ; 
-			await template() ; 
+			// await template() ; 
 			browserSync.reload() ; 
 		}
 		tmp() ; 

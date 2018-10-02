@@ -54,6 +54,6 @@ const nodemonSet = () => {
 	}) ;
 } ;
 
-const serverSet = gulp.series( server , template , nodemonSet ) ; 
+const serverSet = gulp.series( server /*, template*/ , nodemonSet ) ; 
 
 export default serverSet ;  
