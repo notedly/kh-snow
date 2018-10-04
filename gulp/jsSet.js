@@ -1,31 +1,23 @@
 import gulp from 'gulp' ; 
 import fs from 'fs' ; 
 import babel from 'gulp-babel' ; 
+import webpackCompFunc from './webpackFunc' ; 
 import PATH from 'Dir' ; 
 
 const jsSet = () => {
 	console.log( '\n\n[ jsSet ]' ) ; 
-	return new Promise( resolve => {
-
-		gulp.src( `${ PATH.appRoot }/${ PATH.SRC.JS }/**/*.js` )
-			.pipe( babel({
-				"presets" : ['es2015', 'es2017', 'stage-0', 'stage-3' , 'react'],
-				"plugins" : [
-					'transform-decorators-legacy', 
-					'transform-class-properties' ,
-					'transform-async-to-generator' , 
-					'transform-object-assign' , 
-					'transform-regenerator' , 
-					["transform-runtime", {
-						"helpers": false, // defaults to true 
-						"polyfill": false, // defaults to true 
-						"regenerator": true, // defaults to true 
-						"moduleName": "babel-runtime" // defaults to "babel-runtime" 
-					}]
-				],
-			}))
-			.pipe( gulp.dest( `${ PATH.appRoot }/${ PATH.DEST.JS }` ) )
-			.on( 'finish' , resolve ) ; 
+	return new Promise( ( resolve , reject ) => {
+		fs.readdir( `${ PATH.appRoot }/${ PATH.SRC.JS }/` , ( err , fls ) => {
+			console.log( 'err : ' , err ) ; 
+			let arr = [] ; 
+			fls.forEach(( file ) => {
+				if ( file.indexOf( '.js' ) > -1 ) {
+					file = file.replace( '.js' , '' ) ; 
+					webpackCompFunc( file ) ; 
+				}
+			}) ;  
+		}) ; 
+		resolve() ; 
 	}) ; 
 }
 

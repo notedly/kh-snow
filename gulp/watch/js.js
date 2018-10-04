@@ -5,43 +5,38 @@ import babel from 'gulp-babel' ;
 import webpackCompile from 'gulp_setting/webpackCompile' ; 
 import browserSync from 'browser-sync' ; 
 import { server } from 'gulp_setting/watch/server' ; 
+import chkEvtFunc from 'gulp_setting/template/chkEvtFunc' ; 
+import getFiles from 'gulp_setting/template/getFiles' ; 
+import webpackCompFunc from 'gulp_setting/webpackFunc' ; 
 
-const jsSet = ( path ) => {
+const jsSet = ( chkInfo ) => {
 	console.log( '\n\n[ watch jsSet ]' ) ; 
 	return new Promise( resolve => {
-		path = path.replace( /\//g , '\\' ) ; 
-		let destPath = path.substr( 0 , path.lastIndexOf( '\\' ) ) ; 
-		destPath = destPath.replace( 'workspace\\src' , 'workspace\\build' ) ; 
+		// console.log( 'chkInfo.path : ' , chkInfo.path ) ; 
+		// console.log( 'PATH : ' , PATH.DIR.SRC ) ; 
 
-		gulp.src( path )
-			.pipe( babel({
-				"presets" : ['es2015', 'es2017', 'stage-3' , 'react'],
-				"plugins" : [
-					'transform-decorators-legacy', 
-					'transform-class-properties' ,
-					'transform-async-to-generator' , 
-					'transform-object-assign' , 
-					'transform-regenerator' , 
-					["transform-runtime", {
-						"helpers": false, // defaults to true 
-						"polyfill": false, // defaults to true 
-						"regenerator": true, // defaults to true 
-						"moduleName": "babel-runtime" // defaults to "babel-runtime" 
-					}]
-				],
-			}))
-			.pipe( gulp.dest( destPath ) )
-			.on( 'finish' , resolve ) ; 
+		let evtPath = chkInfo.path.split( `${ PATH.DIR.SRC }/` )[1].split( '/' ) ; 
+		console.log( 'evtPath : ' , evtPath ) ; 
+		let fileName = evtPath.pop().replace( /\.js$/ , '' ) ; 
+
+		console.log( 'evtPath : ' , evtPath ) ; 
+		console.log( 'fileName : ' , fileName ) ; 
+
+		/*switch( !0 ) {
+		} // end of switch */
 	}) ; 
 } ; 
 
 const js = () => {
 	console.log( '\n\n[ watch js ]' ) ; 
 	gulp.watch( `${ PATH.appRoot }\\${ PATH.SRC.JS }\\**\\*.js` ).on( 'all' , ( evt , path , stats ) => {
-		console.log( 'path' , path ) ; 
+		// console.log( 'path' , path ) ; 
+		let chkInfo = chkEvtFunc( evt , path ) ; 
+		// console.log( 'chkInfo : ' , chkInfo ) ; 
+		if ( !chkInfo.bln ) return ; // 현재 감지된 파일이 존재하지 않으면( bln == false ) 작업을 멈춥니다.
 
 		async function tmp () {
-			await jsSet( path ) ; 
+			await jsSet( chkInfo ) ; 
 			console.log( `-----------> ${ PATH.appRoot }\\${ PATH.SRC.SERVER }/app.js` ) ; 
 			await server( `${ PATH.appRoot }\\${ PATH.SRC.SERVER }/app.js` ) ; 
 			browserSync.reload() ; 

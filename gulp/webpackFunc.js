@@ -1,12 +1,15 @@
 import gulp from 'gulp' ; 
 import webpack from 'gulp-webpack' ; 
+import PATH from 'Dir' ; 
 
-const webpackCompile = ( evt , resolve ) => {
-	console.log( 'evt : ' , evt ) ; 
-
+const webpackCompFunc = ( jsName , callback ) => {
 	webpack({
-		entry : { entryName : `${ evt.path }${ evt.fileName }` } , 
-		output : { filename : evt.fileName } , 
+		entry : {
+			entryName : `${ PATH.appRoot }/${ PATH.SRC.JS }/${jsName}.js`
+		} , 
+		output : {
+			filename : `${jsName}.js`
+		} , 
 		module : {
 			loaders : [
 				{
@@ -31,18 +34,23 @@ const webpackCompile = ( evt , resolve ) => {
 						],
 					}
 				} , 
-/*				{
-					test: /\.scss$/ , 
-					loaders : [
-						"style-loader" 
-						, "css-loader" 
-						, "sass-loader" 
+				{
+					test: /\.scss$/,
+					loaders: [
+						"style-loader" // creates style nodes from JS strings
+						, "css-loader" // translates CSS into CommonJS
+						, "sass-loader" // compiles Sass to CSS
 					]
-				}*/
+				}
 			]   
 		} 
-	}).pipe( gulp.dest( evt.dest  ) )
-	.on( 'finish' , resolve ) ; 
-} ; 
+	}).pipe( gulp.dest( `${ PATH.appRoot }/${ PATH.DEST.JS }` ) )
+	.on( 'finish' , () => {
+		console.log( 'callback : ' , callback , typeof callback ) ; 
+		if ( typeof callback == 'function' ) {
+			callback() ; 
+		}
+	}) ; 
+}
 
-export default webpackCompile ; 
+export default webpackCompFunc ; 

@@ -10,13 +10,8 @@ class Option extends Component {
 
 	toggleSearch = () => {
 		console.log( 'aaaaaaaaaaaa' ) ; 
-		console.log( this ) ; 
-		this.yaho.textContent = 'zzzzzz'; 
 	}
 
-	componentDidMount () {
-		this.yaho = this.refs.a ; 
-	}
 
 	render () {
 		return (
@@ -28,7 +23,7 @@ class Option extends Component {
 							console.log( 'value : ' , value ) ; 
 							return (
 								<li>
-									<button ref="a" style={{ border: '1px solid red' }}
+									<button style={{ border: '1px solid red' }}
 										className={ value.bln ? 'search active' : 'search' }
 										// onClick={ value.toggleSearch }>
 										onClick={ this.toggleSearch }>
