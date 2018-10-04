@@ -107,14 +107,8 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   transition: background-color 5000s ease-in-out 0s , color 5000s ease-in-out 0s; }
 
-body {
-  background-color: #ccc; }
-
 #header {
   border: 1px solid purple; }
 
 body {
   font-family: 'Helvetica Neue' , Helvetica , Arial , sans-serif; }
-
-body {
-  border: 1px solid purple; }
