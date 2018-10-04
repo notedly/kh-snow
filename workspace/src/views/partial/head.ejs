@@ -9,7 +9,11 @@
 	<meta property="og:image" content="http://www.gaesignerblog.com/images/gaesigner_400x400.jpg">
 	<meta property="og:url" content="http://www.gaesignerblog.com/post/3">	
 	<title><%= typeof title !='undefined' ? title : 'Welcome to the Gaesigner Blog' %></title>
+	<% if ( typeof css != 'undefined' ) { %>
 	<link rel="stylesheet" type="text/css" href="<%= css %>">
+	<% }%>
+	<% if ( typeof js != 'undefined' ) { %>
 	<script src="<%= js %>"></script>
+	<% }%>
 </head>
 <body>

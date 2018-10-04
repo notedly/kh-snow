@@ -9,7 +9,7 @@ const jsSet = () => {
 
 		gulp.src( `${ PATH.appRoot }/${ PATH.SRC.JS }/**/*.js` )
 			.pipe( babel({
-				"presets" : ['es2015', 'es2017', 'stage-3' , 'react'],
+				"presets" : ['es2015', 'es2017', 'stage-0', 'stage-3' , 'react'],
 				"plugins" : [
 					'transform-decorators-legacy', 
 					'transform-class-properties' ,
