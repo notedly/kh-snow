@@ -21,7 +21,7 @@ gulp.task( 'default' , gulp.series(
 	ejsSet , 
 	serverSet , 
 	browserSyncSet , 
-	// watch , 
+	watch , 
 )) ; 
 
 gulp.task( 'watch' , watch ) ; 

@@ -22,9 +22,7 @@ const jsSet = () => {
 					}) ; 
 				}) ; 
 
-				Promise.all( proms ).then( result => {
-					resolve() ; 
-				}) ; 
+				Promise.all( proms ).then( result => resolve() ) ; 
 			})() ; 
 
 		}) ; 

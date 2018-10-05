@@ -1,11 +1,9 @@
 import React , { Component } from 'react' ; 
 import ReactDOM , { render } from 'react-dom' ; 
-import Top from './include/Top' ; 
 
 class IndexContainer extends Component {
 	render () {
 		return ([
-			<Top key="Top" /> , 
 			<div>IndexContainer In</div> , 
 		]) ; 
 	}

@@ -31,7 +31,35 @@ const jsSet = ( chkInfo ) => {
 				경로로 인지합니다. 최상위인 경우라면 현재 저장된 파일 하나만을 
 				새로 번들링 하여 줍니다. */
 
+				( async () => {
+					await webpackCompFunc( fileName ) ; 
+					browserSync.reload() ; 
+				})() ; 
 				
+				break ; 
+			case evtPath[1] == 'include' : 
+				console.log('yyyyyyy') ; 
+
+				let path = `${ PATH.appRoot }/${ PATH.SRC.JS }/` ; 
+
+					let filesArr [] ; 
+					getFiles( path ).then( result => {
+						console.log( 'result : ' , result ) ; 
+						result.map( fileName => {
+							fs.readFile( `${ path }${fileName}` , 'utf8' , ( err , fileData ) => {
+								let re = new RegExp( `^import.*\/include/` , 'gm' ) ; 
+								let findStr = re.exec( fileData ) ; 
+								console.log( findStr == null ) ; 
+								if ( filesArr )
+							}) ; 
+						}) ; 
+					}) ; 
+					
+				}).then( result => {
+					console.log( '==> result : ' , result ) ; 
+				})
+
+
 				break ; 
 			default : 
 		} // end of switch 
@@ -48,7 +76,7 @@ const js = () => {
 
 		async function tmp () {
 			await jsSet( chkInfo ) ; 
-			console.log( `-----------> ${ PATH.appRoot }\\${ PATH.SRC.SERVER }/app.js` ) ; 
+			// console.log( `-----------> ${ PATH.appRoot }\\${ PATH.SRC.SERVER }/app.js` ) ; 
 			await server( `${ PATH.appRoot }\\${ PATH.SRC.SERVER }/app.js` ) ; 
 			browserSync.reload() ; 
 		}
