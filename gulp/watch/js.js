@@ -14,16 +14,27 @@ const jsSet = ( chkInfo ) => {
 	return new Promise( resolve => {
 		// console.log( 'chkInfo.path : ' , chkInfo.path ) ; 
 		// console.log( 'PATH : ' , PATH.DIR.SRC ) ; 
+		/**
+		@evtPath - Array : 저장된 파일을 담고있는 현재의 파일경로
+		@fileName - String : 저장된 파일명
+		**/
 
 		let evtPath = chkInfo.path.split( `${ PATH.DIR.SRC }/` )[1].split( '/' ) ; 
-		console.log( 'evtPath : ' , evtPath ) ; 
 		let fileName = evtPath.pop().replace( /\.js$/ , '' ) ; 
 
 		console.log( 'evtPath : ' , evtPath ) ; 
 		console.log( 'fileName : ' , fileName ) ; 
 
-		/*switch( !0 ) {
-		} // end of switch */
+		switch( !0 ) {
+			case evtPath.length == 1 : 
+				/*파일경로를 담고 있는 배열의 길이가 1개일 경우를 최상위 
+				경로로 인지합니다. 최상위인 경우라면 현재 저장된 파일 하나만을 
+				새로 번들링 하여 줍니다. */
+
+				
+				break ; 
+			default : 
+		} // end of switch 
 	}) ; 
 } ; 
 
