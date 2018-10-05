@@ -7,7 +7,7 @@ import browserSync from 'browser-sync' ;
 import { server } from 'gulp_setting/watch/server' ; 
 import chkEvtFunc from 'gulp_setting/template/chkEvtFunc' ; 
 import getFiles from 'gulp_setting/template/getFiles' ; 
-import webpackCompFunc from 'gulp_setting/webpackFunc' ; 
+import webpackCompFunc from 'gulp_setting/template/webpackFunc' ; 
 
 const jsSet = ( chkInfo ) => {
 	console.log( '\n\n[ watch jsSet ]' ) ; 

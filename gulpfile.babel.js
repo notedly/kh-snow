@@ -21,7 +21,7 @@ gulp.task( 'default' , gulp.series(
 	ejsSet , 
 	serverSet , 
 	browserSyncSet , 
-	watch , 
+	// watch , 
 )) ; 
 
 gulp.task( 'watch' , watch ) ; 
@@ -29,7 +29,7 @@ gulp.task( 'watch' , watch ) ;
 
 import PATH from 'Dir' ; 
 import fs from 'fs' ; 
-import webpackCompFunc from 'gulp_setting/webpackFunc' ; 
+import webpackCompFunc from 'gulp_setting/template/webpackFunc' ; 
 
 gulp.task( 'test' , () => {
 	console.log( 'test' ) ; 

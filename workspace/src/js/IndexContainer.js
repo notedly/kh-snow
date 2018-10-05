@@ -6,12 +6,10 @@ class IndexContainer extends Component {
 	render () {
 		return ([
 			<Top key="Top" /> , 
-			<div>IndexContainer In</div> , 
+			<div key="IndexContainer">IndexContainer In</div> , 
 		]) ; 
 	}
 }
-
-// export default IndexContainer ; 
 
 window.addEventListener( 'load' , () => {
 	let elem_blogContainer = document.createElement( 'div' ) ; 
