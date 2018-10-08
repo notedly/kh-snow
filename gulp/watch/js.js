@@ -42,22 +42,31 @@ const jsSet = ( chkInfo ) => {
 
 				let path = `${ PATH.appRoot }/${ PATH.SRC.JS }/` ; 
 
-					let filesArr [] ; 
-					getFiles( path ).then( result => {
-						console.log( 'result : ' , result ) ; 
-						result.map( fileName => {
-							fs.readFile( `${ path }${fileName}` , 'utf8' , ( err , fileData ) => {
-								let re = new RegExp( `^import.*\/include/` , 'gm' ) ; 
-								let findStr = re.exec( fileData ) ; 
-								console.log( findStr == null ) ; 
-								if ( filesArr )
-							}) ; 
+				getFiles( path ).then( result => {
+					console.log( 'result : ' , result ) ; 
+					let filesArr = [] ; 
+					result.map( ( fileName , idx ) => {
+						fs.readFile( `${ path }${fileName}` , 'utf8' , ( err , fileData ) => {
+							let re = new RegExp( `^import.*\/include/` , 'gm' ) ; 
+							let findStr = re.exec( fileData ) ; 
+							console.log( '==>' , findStr == null , idx ) ; 
+
+							if ( findStr != null ) {
+								filesArr.push( fileName ) ; 
+							}
+
+							if ( idx == result.length -1 ) {
+								console.log( 'filesArr : ' , filesArr ) ; 
+								console.log( 'yaho' ) ; 
+								return filesArr ; 
+							}
 						}) ; 
 					}) ; 
-					
 				}).then( result => {
-					console.log( '==> result : ' , result ) ; 
-				})
+					console.log( 'yeah' , result ) ; 
+
+				}) ; 
+
 
 
 				break ; 
