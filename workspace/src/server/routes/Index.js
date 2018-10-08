@@ -19,7 +19,6 @@ Index.get( '/' , ( req , res ) => {
 		description : '개발지식을 공유하고싶어요' , 
 		css : 'css/index.css' , 
 		js : 'js/IndexContainer.js' , 
-		body : 'Content' , 
 	}) ; 
 }) ; 
 
