@@ -4,11 +4,6 @@ import PATH from 'Dir' ;
 
 const webpackCompFunc = ( jsName ) => {
 	return new Promise( resolve => {
-		// console.log( '-- jsName : ' , jsName ) ; 
-		// path = path.replace( /\//g , '\\' ) ; 
-		// let destPath = path.substr( 0 , path.lastIndexOf( '\\' ) ) ; 
-		// destPath = destPath.replace( 'workspace\\src' , 'workspace\\build' ) ; 
-
 		new Promise( resolveSub => {
 			webpack({
 				entry : {

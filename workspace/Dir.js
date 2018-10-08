@@ -8,12 +8,12 @@ const PATH = {
 	PORT : 8005 , 
 	DIR : DIR , 
 	SRC : {
-		JS : `${ DIR.SRC }\\js` , 
-		SERVER : `${ DIR.SRC }\\server` , 
-		IMAGES : `${ DIR.SRC }\\images` , 
-		CSS : `${ DIR.SRC }\\css` , 
-		SCSS : `${ DIR.SRC }\\scss` , 
-		EJS : `${ DIR.SRC }\\views` , 
+		JS : `${ DIR.SRC }/js` , 
+		SERVER : `${ DIR.SRC }/server` , 
+		IMAGES : `${ DIR.SRC }/images` , 
+		CSS : `${ DIR.SRC }/css` , 
+		SCSS : `${ DIR.SRC }/scss` , 
+		EJS : `${ DIR.SRC }/views` , 
 	} , 
 	DEST : {
 		JS : `${ DIR.DEST }/js` , 

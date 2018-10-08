@@ -16,7 +16,6 @@ let chkEvtFunc = ( evt , path ) => {
 		null 
 	] ; 
 
-	// console.log( 'newPath : ' , newPath ) ; 
 	switch( evt ) {
 		case 'change' : 
 			break ; 

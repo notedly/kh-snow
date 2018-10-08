@@ -5,11 +5,7 @@ import browserSync from 'browser-sync' ;
 const ejs = () => {
 	return new Promise( ( resolve , reject ) => {
 		console.log( '\n\n[ watch ejs ]' ) ; 
-		console.log( `${ PATH.appRoot }\\${ PATH.SRC.EJS }\\**\\*.ejs` ) ; 
 		gulp.watch( `${ PATH.appRoot }\\${ PATH.SRC.EJS }\\**\\*.ejs` ).on( 'all' , ( evt , path , stats ) => {
-			console.log( evt ) ; 
-			console.log( path ) ; 
-
 			path = path.replace( /\//g , '\\' ) ; 
 			let destPath = path.substr( 0 , path.lastIndexOf( '\\') ) ; 
 			destPath = destPath.replace( 'workspace\\src' , 'workspace\\build' ) ; 

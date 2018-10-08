@@ -6,15 +6,16 @@ import express , { Router } from 'express';
 import ReactDOMServer , { renderToString } from 'react-dom/server';
 import ejs from 'ejs' ; 
 
-const Index = Router() ; 
+const Sub1 = Router() ; 
 
-Index.get( '/' , ( req , res ) => {
+Sub1.get( '/' , ( req , res ) => {
 	res.render( 'default' , {
-		title : 'index - Welcome to the Gaesigner Blog' , 
-		description : '메인페이지 - 개발지식을 공유하고싶어요' , 
-		css : 'css/index.css' , 
-		js : 'js/IndexContainer.js' , 
+		title : 'sub1 - Welcome to the Gaesigner Blog' , 
+		description : '서베페이지 - 개발지식을 공유하고싶어요.' , 
+		css : 'css/sub1.css' , 
+		js : 'js/SubContainer1.js' , 
+		body : 'sub1 페이지 입니다.' , 
 	}) ; 
 }) ; 
 
-export default Index ; 
+export default Sub1 ; 

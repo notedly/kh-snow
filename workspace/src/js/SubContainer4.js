@@ -1,21 +1,18 @@
 import React , { Component } from 'react' ; 
 import ReactDOM , { render } from 'react-dom' ; 
 import Top from './include/Top' ; 
+import Btm from './include/Btm' ; 
 
-class IndexContainer extends Component {
+class WrapContainer extends Component {
 	render () {
 		return ([
 			<Top key="Top" /> , 
-			<div>IndexContainer In</div> , 
+			<div key="WrapContainer" id="container">WrapContainer In</div> , 
+			<Btm key="Btm" /> , 
 		]) ; 
 	}
 }
 
-// export default IndexContainer ; 
-
 window.addEventListener( 'load' , () => {
-	let elem_blogContainer = document.createElement( 'div' ) ; 
-	elem_blogContainer.classList.add( 'wrapBox') ; 
-	render( <IndexContainer /> , elem_blogContainer ) ; 
-	document.body.appendChild( elem_blogContainer ) ; 
+	render( <WrapContainer /> , document.body.querySelector( '#wrapBox' ) ) ; 
 }) ; 

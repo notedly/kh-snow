@@ -11,9 +11,6 @@ const jsSet = () => {
 		let path = `${ PATH.appRoot }/${ PATH.SRC.JS }/` ; 
 
 		fs.readdir( path , ( err , fls ) => {
-			// console.log( 'err : ' , err ) ; 
-			// console.log( 'fls : ' , fls ) ; 
-
 			let proms = [] ; 
 			(async () => {
 				await getFiles( path ).then( result => {

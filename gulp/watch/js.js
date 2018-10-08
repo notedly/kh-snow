@@ -2,7 +2,6 @@ import fs from 'fs' ;
 import gulp from 'gulp' ; 
 import PATH from 'Dir' ; 
 import babel from 'gulp-babel' ; 
-import webpackCompile from 'gulp_setting/webpackCompile' ; 
 import browserSync from 'browser-sync' ; 
 import { server } from 'gulp_setting/watch/server' ; 
 import chkEvtFunc from 'gulp_setting/template/chkEvtFunc' ; 

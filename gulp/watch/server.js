@@ -17,9 +17,6 @@ const server = ( path ) => {
 		let destPath = path.substr( 0 , path.lastIndexOf( '\\' ) ) ; 
 		destPath = destPath.replace( 'workspace\\src' , 'workspace/build' ) ; 
 
-		// console.log( 'compilePath : ' , compilePath ) ; 
-		// console.log( 'destPath : ' , destPath ) ; 
-
 		gulp.src( compilePath )
 			.pipe( babel({
 				"presets" : ['es2015', 'es2017', 'stage-3' , 'react'],
@@ -42,25 +39,11 @@ const server = ( path ) => {
 	}) ;
 } ; 
 
-const template = () => {
-	return new Promise( ( resolve , reject ) => {
-		console.log( '\n\n[ watch template ]' ) ; 
-		gulp.src( `${ PATH.appRoot }/${ PATH.SRC.SERVER }/template/**` )
-			.pipe( gulp.dest( `${ PATH.appRoot }/${ PATH.DEST.SERVER }/template`) )
-			.on( 'finish' , resolve ) ; 
-	}) ;
-} ; 
-
 const serverSet = () => {
 	console.log( '\n\n[ watch serverSet ]' ) ; 
-
 	gulp.watch( `${ PATH.appRoot }/${ PATH.SRC.SERVER }/**/*` ).on( 'all' , ( evt , path , stats ) => {
-		// console.log( 'evt' , evt ) ; 
-		console.log( 'path' , path ) ; 
-
 		async function tmp () {
 			await server( path ) ; 
-			// await template() ; 
 			browserSync.reload() ; 
 		}
 		tmp() ; 

@@ -6,18 +6,16 @@ import index_sub from './index/index_sub' ;
 
 console.log( 'index_sub : ' , index_sub ) ; 
 
-class IndexContainer extends Component {
+class WrapContainer extends Component {
 	render () {
 		return ([
 			<Top key="Top" /> , 
-			<div key="IndexContainer">IndexContainer In</div> , 
+			<div key="WrapContainer" id="container">WrapContainer In</div> , 
+			<Btm key="Btm" /> , 
 		]) ; 
 	}
 }
 
 window.addEventListener( 'load' , () => {
-	let elem_blogContainer = document.createElement( 'div' ) ; 
-	elem_blogContainer.classList.add( 'wrapBox') ; 
-	render( <IndexContainer /> , elem_blogContainer ) ; 
-	document.body.querySelector( '#content' ).appendChild( elem_blogContainer ) ; 
+	render( <WrapContainer /> , document.body.querySelector( '#wrapBox' ) ) ; 
 }) ; 

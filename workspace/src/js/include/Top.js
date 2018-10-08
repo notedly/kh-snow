@@ -11,6 +11,13 @@ class Top extends Component {
 				<h1 className="logo">
 					<a href="/">&lt; /&gt; Gaesigners<em>Beta</em></a>
 				</h1>
+				<nav>
+					<a href="/">home</a>
+					<a href="/sub1">sub1 page</a>
+					<a href="/sub2">sub2 page</a>
+					<a href="/sub3">sub3 page</a>
+					<a href="/sub4">sub4 page</a>
+				</nav>
 			</header>
 		) ; 
 	}

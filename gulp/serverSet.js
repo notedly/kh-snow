@@ -44,7 +44,6 @@ const template = () => {
 const nodemonSet = () => {	
 	return new Promise( ( resolve , reject ) => {
 		console.log( '\n\n[ nodemonSet ]' ) ; 
-		console.log( PATH.appRoot + '\\build\\server\\' + 'app.js' ) ; 
 		nodemon({
 			script : PATH.appRoot + '\\build\\server\\' + 'app.js' , 
 			watch : PATH.appRoot + '\\build\\server' 

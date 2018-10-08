@@ -1,0 +1,30 @@
+html , body {
+	height: 100%; 
+	font-size: 12px; 
+	color: #555; 
+}
+
+#wrapBox {
+	$headerHeight: 100px; 
+	$footerHeight: 100px; 
+	height: 100%; 
+
+	> * {
+		padding: 20px; 
+	}
+
+	#header {
+		height: $headerHeight; 
+		background-color: #ccc; 
+	}
+
+	#container {
+		height: calc( 100% - #{$headerHeight + $footerHeight} );
+		background-color: #ddd; 
+	}
+
+	#footer {
+		height: $footerHeight; 
+		background-color: #ccc; 
+	}
+}
