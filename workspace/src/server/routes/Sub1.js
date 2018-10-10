@@ -15,6 +15,7 @@ Sub1.get( '/' , ( req , res ) => {
 		css : 'css/sub1.css' , 
 		js : 'js/SubContainer1.js' , 
 		body : 'sub1 페이지 입니다.' , 
+		lib : 'lib/tmp_lib1.js' , 
 	}) ; 
 }) ; 
 

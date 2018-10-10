@@ -1,10 +1,12 @@
-<% if ( typeof lib == 'object' ) { %>
-  <% lib.forEach(function( jsFile ){ %>
-  	<script src="<%= jsFile %>"></script>
-  <% }); %>
+<% if ( typeof lib != 'undefined' ) { %>
+	<% if ( typeof lib == 'object' ) { %>
+	  <% lib.forEach(function( jsFile ){ %>
+	  	<script src="<%= jsFile %>"></script>
+	  <% }); %>
 
-<% } else { %>
-	<script src="<%= lib %>"></script>
+	<% } else { %>
+		<script src="<%= lib %>"></script>
+	<% } %>
 <% } %>
 
 </body>

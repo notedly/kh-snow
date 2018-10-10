@@ -15,7 +15,7 @@ Index.get( '/' , ( req , res ) => {
 		css : 'css/index.css' , 
 		js : 'js/IndexContainer.js' , 
 		lib : 'lib/tmp_lib1.js' , 
-		// lib : [ 'lib/tmp_lib1.js' ] , 배열형태로 여러개의 라이브러리를 추가할 수 도 있습니다. 
+		// lib : [ 'lib/tmp_lib1.js' ] , // 배열형태로 여러개의 라이브러리를 추가할 수 도 있습니다. 
 	}) ; 
 }) ; 
 
