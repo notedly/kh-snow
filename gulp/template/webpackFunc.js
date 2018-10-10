@@ -2,12 +2,24 @@ import gulp from 'gulp' ;
 import webpack from 'gulp-webpack' ; 
 import PATH from 'Dir' ; 
 
-const webpackCompFunc = ( jsName ) => {
+const webpackCompFunc = ( jsName , path ) => {
+
+	let pathSRC = null 
+	,	pathDEST = null ; 
+
+	if ( path == undefined ) {
+		pathSRC = `${ PATH.appRoot }/${ PATH.SRC.JS }/${jsName}.js` ; 
+		pathDEST = `${ PATH.appRoot }/${ PATH.DEST.JS }` ; 
+	} else {
+		pathSRC = `${ path.src }/${jsName}.js` ; 
+		pathDEST = path.dest ; 
+	}
+
 	return new Promise( resolve => {
 		new Promise( resolveSub => {
 			webpack({
 				entry : {
-					entryName : `${ PATH.appRoot }/${ PATH.SRC.JS }/${jsName}.js`
+					entryName : `${ pathSRC }`
 				} , 
 				output : {
 					filename : `${jsName}.js`
@@ -46,7 +58,7 @@ const webpackCompFunc = ( jsName ) => {
 						}
 					]   
 				} 
-			}).pipe( gulp.dest( `${ PATH.appRoot }/${ PATH.DEST.JS }` ) )
+			}).pipe( gulp.dest( `${ pathDEST }` )  )
 			.on( 'finish' , () => {
 				resolveSub() ; 
 			}) ; 

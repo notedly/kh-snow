@@ -9,6 +9,7 @@ const PATH = {
 	DIR : DIR , 
 	SRC : {
 		JS : `${ DIR.SRC }/js` , 
+		LIB : `${ DIR.SRC }/lib` , 
 		SERVER : `${ DIR.SRC }/server` , 
 		IMAGES : `${ DIR.SRC }/images` , 
 		CSS : `${ DIR.SRC }/css` , 
@@ -17,6 +18,7 @@ const PATH = {
 	} , 
 	DEST : {
 		JS : `${ DIR.DEST }/js` , 
+		LIB : `${ DIR.DEST }/lib` , 
 		SERVER : `${ DIR.DEST }/server` , 
 		IMAGES : `${ DIR.DEST }/images` , 
 		CSS : `${ DIR.DEST }/css` , 
