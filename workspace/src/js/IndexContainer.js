@@ -11,9 +11,11 @@ class WrapContainer extends Component {
 	render () {
 		return ([
 			<Top key="Top" /> , 
-			<div key="WrapContainer" id="container">WrapContainer In</div> , 
-			<div className="innerSCSSWrap" key="tmpScss">
-				js 에서 직접 sass 파일 임포트
+			<div key="WrapContainer" id="container">
+				WrapContainer In
+				<div className="innerSCSSWrap" key="tmpScss">
+					js 에서 직접 sass 파일 임포트가 가능합니다.
+				</div>
 			</div> , 
 			<Btm key="Btm" /> , 
 		]) ; 

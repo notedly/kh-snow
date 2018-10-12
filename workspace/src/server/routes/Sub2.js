@@ -14,7 +14,6 @@ Sub2.get( '/' , ( req , res ) => {
 		description : '서베페이지 - 개발지식을 공유하고싶어요.' , 
 		css : 'css/sub2.css' , 
 		js : 'js/SubContainer2.js' , 
-		body : 'sub2 페이지 입니다.' , 
 	}) ; 
 }) ; 
 

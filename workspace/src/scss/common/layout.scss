@@ -1,3 +1,6 @@
+@charset "UTF-8" ; 
+@import './variables.scss'; 
+
 html , body {
 	height: 100%; 
 	font-size: 12px; 
@@ -5,8 +8,6 @@ html , body {
 }
 
 #wrapBox {
-	$headerHeight: 100px; 
-	$footerHeight: 100px; 
 	height: 100%; 
 
 	> * {
@@ -19,7 +20,7 @@ html , body {
 	}
 
 	#container {
-		height: calc( 100% - #{$headerHeight + $footerHeight} );
+		min-height: calc( 100% - #{$headerHeight + $footerHeight} );
 		background-color: #ddd; 
 	}
 

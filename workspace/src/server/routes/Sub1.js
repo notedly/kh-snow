@@ -14,7 +14,6 @@ Sub1.get( '/' , ( req , res ) => {
 		description : '서베페이지 - 개발지식을 공유하고싶어요.' , 
 		css : 'css/sub1.css' , 
 		js : 'js/SubContainer1.js' , 
-		body : 'sub1 페이지 입니다.' , 
 		lib : 'lib/tmp_lib1.js' , 
 	}) ; 
 }) ; 
