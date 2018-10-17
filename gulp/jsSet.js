@@ -14,7 +14,8 @@ const jsSet = () => {
 			let proms = [] ; 
 			(async () => {
 				await getFiles( path ).then( result => {
-					result.map( fileName => {
+					let tmp = result.filter( fileName => fileName.match( /.js$/g ) ) ; 
+					tmp.map( fileName => {
 						proms.push( webpackCompFunc( fileName.replace( '.js' , '' ) ) ) ; 
 					}) ; 
 				}) ; 
