@@ -5,10 +5,6 @@ class DefaultLayout extends Component {
 	constructor ( props ) {
 		super( props ) ; 
 
-		console.log( 'this props : ' , props ) ; 
-
-		console.log( typeof this.props.lib ) ; 
-
 		/**
 		서버에서 layout 용으로 작업된 React 파일입니다. 
 		서버에서 문자열로 변환되어 전달되기에 최초 세팅은 가능하나 
@@ -19,12 +15,9 @@ class DefaultLayout extends Component {
 	makeLib = () => {
 		switch ( typeof this.props.lib ) {
 			case 'string' : 
-				console.log('a'); 
 				return <script src={ this.props.lib }></script>
-
 				break ; 
 			default : 
-				console.log('b'); 
 				return this.props.lib.map(( jsfile , idx ) => <script key={ `jsfile${ idx }` } src={ jsfile }></script> ) ; 
 		}
 	}
