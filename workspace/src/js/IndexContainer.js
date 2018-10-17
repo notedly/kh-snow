@@ -4,13 +4,8 @@ import Top from './include/Top' ;
 import Btm from './include/Btm' ; 
 import index_sub from './index/index_sub' ; 
 import './tmpscss.scss' ; // js 파일내에서도 css 를 불러오는것이 가능합니다. 
-// import DefaultLayout from '../views/layouts/default' ; 
-import { PostData } from '../views/layouts/Context' ; 
 
 console.log( 'index_sub : ' , index_sub ) ; 
-console.log( 'PostData : ' , PostData.info ) ; 
-// console.log( 'DefaultLayout : ' , DefaultLayout ) ; 
-
 
 class WrapContainer extends Component {
 	constructor ( props ) {
@@ -18,11 +13,10 @@ class WrapContainer extends Component {
 	}
 
 	clickHandler = () => {
-		console.log( 'aaaaaaaaaaaaaavvvvv' ) ; 
+		console.log( 'sample clicked' ) ; 
 	}
 	
 	render () {
-		console.log( 'yoyoyo' ) ; 
 		return ([
 			<Top key="Top" /> , 
 			<div key="WrapContainer" id="container">
@@ -38,7 +32,5 @@ class WrapContainer extends Component {
 
 window.addEventListener( 'load' , () => {
 	let wrapBox = document.body.querySelector( '#wrapBox' ) ; 
-	console.log( wrapBox )
-	console.log( wrapBox.getAttribute( 'yaho' ) )
 	render( <WrapContainer /> , document.body.querySelector( '#wrapBox' ) ) ; 
 }) ; 

@@ -5,7 +5,7 @@ import jsSet from 'gulp_setting/jsSet' ;
 import libSet from 'gulp_setting/libSet' ; 
 import cssSet from 'gulp_setting/cssSet' ; 
 import imgSet from 'gulp_setting/imgSet' ; 
-import ejsSet from 'gulp_setting/ejsSet' ; 
+import viewSet from 'gulp_setting/viewSet' ; 
 import serverSet from 'gulp_setting/serverSet' ; 
 import browserSyncSet from 'gulp_setting/browserSyncSet' ; 
 import watch from 'gulp_setting/watch' ; 
@@ -17,7 +17,7 @@ gulp.task( 'default' , gulp.series(
 	libSet , 
 	cssSet , 
 	imgSet , 
-	ejsSet , 
+	viewSet , 
 	serverSet , 
 	browserSyncSet , 
 	watch , 

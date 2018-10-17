@@ -4,8 +4,8 @@ import scss from './watch/scss' ;
 import js from './watch/js' ; 
 import lib from './watch/lib' ; 
 import serverSet from './watch/server' ; 
-import ejs from './watch/ejs' ; 
+import view from './watch/view' ; 
 
-const watch = gulp.parallel( scss , js , lib , ejs , serverSet  ) ; 
+const watch = gulp.parallel( scss , js , lib , view , serverSet  ) ; 
 
 export default watch ; 

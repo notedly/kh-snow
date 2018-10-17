@@ -2,21 +2,12 @@ import gulp from 'gulp' ;
 import PATH from 'Dir' ; 
 import babel from 'gulp-babel' ; 
 
-const ejsSet_old = () => {
-	console.log( '\n\n[ ejsSet ]' ) ; 
-	return new Promise( resolve => {
-	gulp.src( `${ PATH.appRoot }/${ PATH.SRC.EJS }/**/*.ejs` )
-		.pipe( gulp.dest( `${ PATH.appRoot }/${ PATH.DEST.EJS }`) )
-		.on( 'finish' , resolve ) ; 
-	}) ; 
-} ; 
-
-const ejsSet = () => {	
-	console.log( '\n\n[ ejsSet ]' ) ; 
+const viewSet = () => {	
+	console.log( '\n\n[ viewSet ]' ) ; 
 	return new Promise( ( resolve , reject ) => {
 		gulp.src([
-			`${ PATH.appRoot }/${ PATH.SRC.EJS }/**/*.js` , 
-			`!${ PATH.appRoot }/${ PATH.SRC.EJS }/{template,template/**}` 
+			`${ PATH.appRoot }/${ PATH.SRC.VIEW }/**/*.js` , 
+			`!${ PATH.appRoot }/${ PATH.SRC.VIEW }/{template,template/**}` 
 			])
 			.pipe( babel({
 				"presets" : ['es2015', 'es2017', 'stage-3' , 'react'],
@@ -34,9 +25,9 @@ const ejsSet = () => {
 					}]
 				],
 			}))
-			.pipe( gulp.dest( `${ PATH.appRoot }/${ PATH.DEST.EJS }` ) )
+			.pipe( gulp.dest( `${ PATH.appRoot }/${ PATH.DEST.VIEW }` ) )
 			.on( 'finish' , resolve ) ; 
 	}) ;
 } ; 
 
-export default ejsSet ; 
+export default viewSet ; 

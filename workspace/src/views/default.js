@@ -1,5 +1,5 @@
 import React from 'react' ; 
-import DefaultLayout from './layouts/default' ; 
+import DefaultLayout from './layouts/init' ; 
 
 // console.log( 'ContextProvider : ' , ContextProvider ) ; 
 // console.log( 'DefaultLayout : ' , Object.keys( DefaultLayout ) ; 
@@ -13,7 +13,7 @@ class HelloMessage extends React.Component {
 
 	render() {
 		return (
-			<DefaultLayout  info={ this.props.info } { ...this.props.default }>
+			<DefaultLayout  { ...this.props.init }>
 				<div>안녕 세상아!</div>
 			</DefaultLayout>
 		);

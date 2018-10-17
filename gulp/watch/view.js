@@ -4,29 +4,12 @@ import PATH from 'Dir' ;
 import { server } from 'gulp_setting/watch/server' ; 
 import browserSync from 'browser-sync' ; 
 
-const ejs_old = () => {
-	return new Promise( ( resolve , reject ) => {
-		console.log( '\n\n[ watch ejs ]' ) ; 
-		gulp.watch( `${ PATH.appRoot }\\${ PATH.SRC.EJS }\\**\\*.ejs` ).on( 'all' , ( evt , path , stats ) => {
-			path = path.replace( /\//g , '\\' ) ; 
-			let destPath = path.substr( 0 , path.lastIndexOf( '\\') ) ; 
-			destPath = destPath.replace( 'workspace\\src' , 'workspace\\build' ) ; 
-
-			gulp.src( path )
-				.pipe( gulp.dest( destPath ) )
-				.on( 'finish' , () => {
-					browserSync.reload() ; 
-				}) ; 
-		}) ; // end of gulp.watch 
-	}) ; 
-} ; 
-
-const ejsCompile = ( path ) => {	
+const viewCompile = ( path ) => {	
 	console.log( '\n\n[ watch server ]' ) ; 
 	return new Promise( ( resolve , reject ) => {
 		let compilePath = path || [
-			`${ PATH.appRoot }/${ PATH.SRC.EJS }/**/*.js` , 
-			`!${ PATH.appRoot }/${ PATH.SRC.EJS }/{template,template/**}` 
+			`${ PATH.appRoot }/${ PATH.SRC.VIEW }/**/*.js` , 
+			`!${ PATH.appRoot }/${ PATH.SRC.VIEW }/{template,template/**}` 
 		] ; 
 
 		path = path.replace( /\//g , '\\' ) ; 
@@ -55,11 +38,11 @@ const ejsCompile = ( path ) => {
 	}) ;
 } ; 
 
-const ejs = () => {
-	console.log( '\n\n[ watch ejs ]' ) ; 
-	gulp.watch( `${ PATH.appRoot }/${ PATH.SRC.EJS }/**/*` ).on( 'all' , ( evt , path , stats ) => {
+const view = () => {
+	console.log( '\n\n[ watch view ]' ) ; 
+	gulp.watch( `${ PATH.appRoot }/${ PATH.SRC.VIEW }/**/*` ).on( 'all' , ( evt , path , stats ) => {
 		async function tmp () {
-			await ejsCompile( path ) ; 
+			await viewCompile( path ) ; 
 			await server( `${ PATH.appRoot }\\${ PATH.SRC.SERVER }/app.js` ) ; 
 			browserSync.reload() ; 
 		}
@@ -67,4 +50,4 @@ const ejs = () => {
 	}) ; 
 } ; 
 
-export default ejs ; 
+export default view ; 
