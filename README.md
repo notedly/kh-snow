@@ -7,7 +7,7 @@ ES5, ES6, ES7 을 사용하기 위해 babel 로 세팅되어있습니다. 이 �
 
 ____
 #자동 컴파일 목록
-1. html (EJS) 
+1. html (JSX) 
 2. css (SASS) 
 3. img 스프라이트 자동 컴파일 (png) 
 4. js ( Server ) 
@@ -25,7 +25,7 @@ ____
     |-- scss : sass 파일 폴더.  
     |-- js : script 태그에 사용되는 파일 폴더. 
     |-- server : 서버실행에 필요한 파일 폴더. 
-    |-- views : 기본 뷰(HTML)를 담당할 파일(템플릿 ejs 사용) 폴더.
+    |-- views : 기본 뷰(HTML)를 담당할 파일(템플릿 jsx 사용) 폴더.
 	└ build : 빌드완성 폴더. src 폴더내의 파일들을 감지하여 로컬서버에서 동작할 수 있도록 파일들을 재배치 및 컴파일 하여줍니다.
 
 ## 폴더 설명
@@ -70,14 +70,14 @@ ____
     		IMAGES : `${ DIR.SRC }/images` , // 이미지 폴더명
     		CSS : `${ DIR.SRC }/css` , // sass 파일이 컴파일되어 생성되는 css 폴더명
     		SCSS : `${ DIR.SRC }/scss` , // sass 파일 폴더명 
-    		EJS : `${ DIR.SRC }/views` , // ejs 파일 폴더명
+    		VIEW : `${ DIR.SRC }/views` , // view 파일 폴더명
     	} , 
     	DEST : {
     		JS : `${ DIR.DEST }/js` , 
     		SERVER : `${ DIR.DEST }/server` , 
     		IMAGES : `${ DIR.DEST }/images` , 
     		CSS : `${ DIR.DEST }/css` , 
-    		EJS : `${ DIR.DEST }/views` , 
+    		VIEW : `${ DIR.DEST }/views` , 
     	}
     } ; 
     
@@ -92,17 +92,15 @@ ____
 	.
 	..
 	...
-    const absolutePath = `${ PATH.appRoot }/../` ; 
-    const app = express() ; 
-    
-    app.engine( 'html' , require( 'ejs' ).renderFile ) ; 
-    app.set( 'views' , `${ absolutePath }/views` ) ; 
-    app.set( 'view engine' , 'ejs' ) ;
+    app.set( 'views' , `${ absolutePath }views` ) ; 
+    app.set('view engine', 'js');
+    app.engine('js', reactViews.createEngine());
+    app.use( '/' , express.static( `${ absolutePath }/` )) ; 
 	...
 	..
 	. 
 
->views 폴더에 존재하는 default.ejs 파일을 활용하여 기본적인 레이아웃을 생성합니다. 이 views 를 활용하는 방법은 
+>views 폴더에 존재하는 default.js 파일을 활용하여 기본적인 레이아웃을 생성합니다. 이 views 를 활용하는 방법은 
 샘플 페이지들을 확인하여 주십시오. ( server/routes/ 내의 파일들과 , js/ 내의 파일들에서 확인하실 수 있습니다. ) 
 각 샘플들은 확인하시 쉽도록  `gulp` 실행 후 열리는 웹페이지에 준비되어있습니다. 
 
@@ -130,6 +128,6 @@ ____
 
 ## 업데이트 현황
 
-#### 2018-10-08
+#### 2018-10-17
 ###### 자동 컴파일 기능 업그레이드
-> - Gulp Default 3.01 기본 기능이 완성되었습니다.
+> - Gulp Default 3.1 기본 기능이 완성되었습니다.

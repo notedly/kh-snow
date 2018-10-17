@@ -6,20 +6,9 @@ const absolutePath = `${ PATH.appRoot }/../` ;
 const app = express() ; 
 
 app.set( 'views' , `${ absolutePath }views` ) ; 
-// app.set( 'view engine' , 'ejs' ) ; 
-// app.engine( 'html' , require( 'ejs' ).renderFile ) ; 
-// app.engine( 'html' , require( 'ejs' ).renderFile ) ; 
-
-/*app.set('view engine', 'js');
-app.engine('js', require('./engine'));
-app.use( '/' , express.static( `${ absolutePath }/` )) ; */
-
-app.set( 'views' , `${ absolutePath }views` ) ; 
 app.set('view engine', 'js');
 app.engine('js', reactViews.createEngine());
 app.use( '/' , express.static( `${ absolutePath }/` )) ; 
-
-console.log( `==========> ${ absolutePath }` ) ; 
 
 // Routes
 import Index from './routes/Index' ; 
