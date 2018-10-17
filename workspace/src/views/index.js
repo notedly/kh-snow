@@ -1,5 +1,7 @@
-var React = require('react');
-var DefaultLayout = require('./layouts/default');
+let React = require('react');
+let DefaultLayout = require('./layouts/default');
+
+let yaho = 'yyyyyyyyyyyyyyyy' ; 
 
 class HelloMessage extends React.Component {
 
@@ -18,4 +20,4 @@ class HelloMessage extends React.Component {
   }
 }
 
-module.exports = HelloMessage;
+module.exports = HelloMessage; 
