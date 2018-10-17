@@ -1,23 +1,21 @@
 import fs from 'fs' ; 
 import client from './client' ; 
 import React , { Component } from 'react' ; 
+import ReactDOM , { render } from 'react-dom' ; 
 import express , { Router } from 'express'; 
-import { renderToString } from 'react-dom/server';
-import ReactDOMServer from 'react-dom/server';
+import ReactDOMServer , { renderToString } from 'react-dom/server';
 import ejs from 'ejs' ; 
-
-import IndexContainer from '../../js/IndexContainer' ;
 
 const Index = Router() ; 
 
 Index.get( '/' , ( req , res ) => {
-	const contentApp = renderToString( <IndexContainer /> );
-	res.render( 'index' , {
-		title : 'Welcome to the Gaesigner Blog' , 
-		description : '개발지식을 공유하고싶어요' , 
+	res.render( 'default' , {
+		title : 'index - Welcome to the Gaesigner Blog' , 
+		description : '메인페이지 - 개발지식을 공유하고싶어요' , 
 		css : 'css/index.css' , 
-		js : 'js/indexTest.js' , 
-		body : contentApp , 
+		js : 'js/IndexContainer.js' , 
+		lib : 'lib/tmp_lib1.js' , 
+		// lib : [ 'lib/tmp_lib1.js' ] , // 배열형태로 여러개의 라이브러리를 추가할 수 도 있습니다. 
 	}) ; 
 }) ; 
 

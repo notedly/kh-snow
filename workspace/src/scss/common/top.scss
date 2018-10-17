@@ -1,3 +1,20 @@
-#header {
-	border: 1px solid purple; 
+@import url('https://fonts.googleapis.com/css?family=Berkshire+Swash'); // 개자이너 로고
+
+.logo {
+	margin-top: 10px; 
+}
+
+nav {
+	a {
+		display: inline-block; 
+		margin: 0px 10px; 
+		color: #555; 
+		&:hover {
+			text-decoration: underline; 
+			color: #f60; 
+		}
+		&:nth-child(1) {
+			margin-left: 0px; 
+		}
+	}
 }

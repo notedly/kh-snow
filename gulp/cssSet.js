@@ -8,7 +8,6 @@ const cache = new Cache ;
 const sassSet = () => {
 	console.log( '\n\n[ cssSet ]\n[ sassSet ]' ) ; 
 	return new Promise( resolve => {
-		console.log( `${ PATH.appRoot }/${ PATH.SRC.SCSS }/*.scss` ) ; 
 		gulp.src( `${ PATH.appRoot }/${ PATH.SRC.SCSS }/*.scss` )
 			.pipe( cache.filter() )
 			.pipe( sass() )

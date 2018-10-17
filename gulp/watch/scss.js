@@ -7,12 +7,7 @@ import browserSync from 'browser-sync' ;
 
 const scss = () => {
 	console.log( '\n\n[ scss ]' ) ; 
-	// console.log( `${ PATH.appRoot }\\${ PATH.SRC.SCSS }\\**\\*.scss` ) ; 
 	gulp.watch( `${ PATH.appRoot }\\${ PATH.SRC.SCSS }\\**\\*.scss` ).on( 'all' , ( evt , path , stats ) => {
-		// console.log( 'evt' , evt ) ; 
-		// console.log( 'path' , path ) ; 
-		// console.log( 'stats' , stats ) ; 
-
 		const cache = new Cache ; 
 		const sassSet = () => {
 			console.log( '\n\n[ cssSet ]\n[ sassSet ]' ) ; 

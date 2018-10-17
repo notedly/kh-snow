@@ -9,6 +9,7 @@ app
 #workspace
 workspace/build/
 workspace/src/server/Dir.js
+workspace/src/css/
 
 #Logs
 *.log

@@ -23,8 +23,6 @@ const copy = () => {
 				비동기 리스너 on 을 사용하여 Promise가 성공했다는 것을 알려줍니다. 
 			*/
 
-			console.log( `!${ PATH.appRoot}\\${ PATH.SRC.IMAGES }\\sprite` ) ; 
-
 			gulp.src([ `${ PATH.appRoot}/${ PATH.DIR.SRC }/images/*` , `!${ PATH.appRoot}\\${ PATH.SRC.IMAGES }\\sprite` ])
 				.pipe( gulp.dest( `${ PATH.appRoot}/${ PATH.DIR.DEST }/images` ) )
 				.on( 'finish' , resolve ) ; 
@@ -61,9 +59,7 @@ const sprite = () => {
 	return new Promise( resolve => {
 		let path = `${ PATH.appRoot }\\${ PATH.SRC.IMAGES}\\sprite\\` ; 
 
-		console.log( 'path : ' , path ) ; 
 		fs.readdir( path , ( err , files ) => {
-			console.log( 'files : ' , files ) ; 
 			files.forEach( dirName => {
 				/*색출된 이름들이 폴더가 아니라면 진입을 불허합니다.*/
 				if ( !fs.lstatSync( `${ path }${ dirName }` ).isDirectory() ) return ; 
