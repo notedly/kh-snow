@@ -9,6 +9,7 @@ import ejs from 'ejs' ;
 const Index = Router() ; 
 
 Index.get( '/' , ( req , res ) => {
+
 	res.render( 'default' , { init : {
 		title : 'index - Welcome to the Gaesigner Blog' , 
 		description : '메인페이지 - 개발지식을 공유하고싶어요' , 

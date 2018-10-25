@@ -5,11 +5,14 @@ import Btm from './include/Btm' ;
 import index_sub from './index/index_sub' ; 
 import './tmpscss.scss' ; // js 파일내에서도 css 를 불러오는것이 가능합니다. 
 
-console.log( 'index_sub : ' , index_sub ) ; 
-
 class WrapContainer extends Component {
 	constructor ( props ) {
 		super( props ) ; 
+
+		console.log( window.__INIT__ ) ; 
+		this.state = window.__INIT__ ; 
+		delete window.__INIT__ ; 
+		document.querySelector( '#preloadedState' ).parentNode.removeChild( document.querySelector( '#preloadedState' ) ) ; 
 	}
 
 	clickHandler = () => {
@@ -22,7 +25,8 @@ class WrapContainer extends Component {
 			<div key="WrapContainer" id="container">
 				WrapContainer In
 				<div className="innerSCSSWrap" key="tmpScss" onClick={ this.clickHandler }>
-					js 에서 직접 sass 파일 임포트가 가능합니다.
+					js 에서 직접 sass 파일 임포트가 가능합니다.<br />
+					{ this.state.sampleData }
 				</div>
 			</div> , 
 			<Btm key="Btm" /> , 
@@ -32,5 +36,5 @@ class WrapContainer extends Component {
 
 window.addEventListener( 'load' , () => {
 	let wrapBox = document.body.querySelector( '#wrapBox' ) ; 
-	render( <WrapContainer /> , document.body.querySelector( '#wrapBox' ) ) ; 
+	render( <WrapContainer yaho={ wrapBox.dataset.react } /> , document.body.querySelector( '#wrapBox' ) ) ; 
 }) ; 
