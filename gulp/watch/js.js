@@ -113,7 +113,11 @@ const jsSet = ( chkInfo ) => {
 
 const js = () => {
 	console.log( '\n\n[ watch js ]' ) ; 
-	gulp.watch( `${ PATH.appRoot }\\${ PATH.SRC.JS }\\**\\*.js` ).on( 'all' , ( evt , path , stats ) => {
+	console.log( PATH.appRoot ) ; 
+	console.log( gulp ) ; 
+	// gulp.watch( `${ PATH.appRoot }\\${ PATH.SRC.JS }\\**\\*.js` ).on( 'all' , ( evt , path , stats ) => {
+	gulp.watch( './test/*.*' ).on( 'all' , ( evt , path , stats ) => {
+		console.log( '????' ) ; 
 		let chkInfo = chkEvtFunc( evt , path ) ; 
 		if ( !chkInfo.bln ) return ; // 현재 감지된 파일이 존재하지 않으면( bln == false ) 작업을 멈춥니다.
 

@@ -7,11 +7,17 @@ import browserSync from 'browser-sync' ;
 
 const scss = () => {
 	console.log( '\n\n[ scss ]' ) ; 
-	gulp.watch( `${ PATH.appRoot }\\${ PATH.SRC.SCSS }\\**\\*.scss` ).on( 'all' , ( evt , path , stats ) => {
+
+	let scss =  gulp.watch( `${ PATH.appRoot.replace( /\\/g , '/' ) }/src/scss/**/*.*` ) ; 
+	console.log( scss.on ) ; 
+	scss.on('all', function( evt , path, stats) {
+		console.log( 'aaaaaa' , path ) ; 
+
 		const cache = new Cache ; 
+
 		const sassSet = () => {
-			console.log( '\n\n[ cssSet ]\n[ sassSet ]' ) ; 
-			return new Promise( resolve => {
+			console.log( 'sassSet : in ' ) ; 
+			return new Promise ( resolve => {
 				gulp.src( `${ PATH.appRoot }/${ PATH.SRC.SCSS }/*.scss` )
 					.pipe( cache.filter() )
 					.pipe( sass() )
@@ -19,11 +25,12 @@ const scss = () => {
 					.pipe( gulp.dest( `${ PATH.appRoot }/${ PATH.SRC.CSS }` ) )
 					.on( 'finish' , () => {
 						resolve() ; 
-					} ) ; 
+					}) ; 
 			}) ; 
 		} ; 
+
 		const css = () => {
-			console.log( '\n\n[ css ]' ) ; 
+			console.log( 'css : in ' ) ; 
 			return new Promise( resolve => {
 				gulp.src( `${ PATH.appRoot }/${ PATH.SRC.CSS }/*.css` )
 					.pipe( cache.filter() )
