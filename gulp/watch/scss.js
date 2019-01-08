@@ -6,7 +6,7 @@ import PATH from 'Dir' ;
 import browserSync from 'browser-sync' ; 
 
 const scss = () => {
-	console.log( '\n\n[ scss ]' ) ; 
+	console.log( '\n\n[ scss in]' ) ; 
 
 	let scss =  gulp.watch( `${ PATH.appRoot.replace( /\\/g , '/' ) }/src/scss/**/*.*` ) ; 
 	console.log( scss.on ) ; 

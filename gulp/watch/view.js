@@ -38,12 +38,26 @@ const viewCompile = ( path ) => {
 	}) ;
 } ; 
 
-const view = () => {
+const view_old = () => {
 	console.log( '\n\n[ watch view ]' ) ; 
 	gulp.watch( `${ PATH.appRoot }/${ PATH.SRC.VIEW }/**/*` ).on( 'all' , ( evt , path , stats ) => {
+		console.log( 'dddddddddddddd' ) ; 
 		async function tmp () {
 			await viewCompile( path ) ; 
 			await server( `${ PATH.appRoot }\\${ PATH.SRC.SERVER }/app.js` ) ; 
+			browserSync.reload() ; 
+		}
+		tmp() ; 
+	}) ; 
+} ; 
+
+const view = () => {
+	let view = gulp.watch( `${ PATH.appRoot.replace( /\\/g , '/' ) }/${ PATH.SRC.VIEW }/**/*` ) ; 
+	view.on( 'all' , ( evt , path , stats ) => {
+		console.log( 'dddddddddddd' ) ; 
+		async function tmp () {
+			await viewCompile( path ) ; 
+			await server( `${ PATH.appRoot.replace( /\\/g , '/' ) }/${ PATH.SRC.SERVER }/app.js` ) ; 
 			browserSync.reload() ; 
 		}
 		tmp() ; 

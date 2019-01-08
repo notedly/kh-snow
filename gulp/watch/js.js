@@ -111,12 +111,12 @@ const jsSet = ( chkInfo ) => {
 	}) ; 
 } ; 
 
-const js = () => {
+const js_old = () => {
 	console.log( '\n\n[ watch js ]' ) ; 
 	console.log( PATH.appRoot ) ; 
 	console.log( gulp ) ; 
-	// gulp.watch( `${ PATH.appRoot }\\${ PATH.SRC.JS }\\**\\*.js` ).on( 'all' , ( evt , path , stats ) => {
-	gulp.watch( './test/*.*' ).on( 'all' , ( evt , path , stats ) => {
+	gulp.watch( `${ PATH.appRoot }/${ PATH.SRC.JS }/**/*.js` ).on( 'all' , ( evt , path , stats ) => {
+	// gulp.watch( './test/*.*' ).on( 'all' , ( evt , path , stats ) => {
 		console.log( '????' ) ; 
 		let chkInfo = chkEvtFunc( evt , path ) ; 
 		if ( !chkInfo.bln ) return ; // 현재 감지된 파일이 존재하지 않으면( bln == false ) 작업을 멈춥니다.
@@ -127,6 +127,22 @@ const js = () => {
 			browserSync.reload() ; 
 		})() ; 
 	}) ; 
+} ; 
+
+const js = () => {
+	console.log( '\n\n[ js in]' ) ; 
+	let js = gulp.watch( `${ PATH.appRoot.replace( /\\/g , '/' ) }/${ PATH.SRC.JS }/**/*.js` ) ;  
+	js.on( 'all' , function ( evt , path , stats ) {
+		console.log( 'bbbb' , path ) ; 
+		let chkInfo = chkEvtFunc( evt , path ) ; 
+		if ( !chkInfo.bln ) return ; // 현재 감지된 파일이 존재하지 않으면( bln == false ) 작업을 멈춥니다.
+		
+		(async () => {
+			await jsSet( chkInfo ) ; 
+			await server( `${ PATH.appRoot.replace( /\\/g , '/' ) }/${ PATH.SRC.SERVER }/app.js` ) ; 
+			browserSync.reload() ; 
+		})() ; 
+	})
 } ; 
 
 export default js ; 

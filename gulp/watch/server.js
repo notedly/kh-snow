@@ -41,7 +41,7 @@ const server = ( path ) => {
 
 const serverSet = () => {
 	console.log( '\n\n[ watch serverSet ]' ) ; 
-	gulp.watch( `${ PATH.appRoot }/${ PATH.SRC.SERVER }/**/*` ).on( 'all' , ( evt , path , stats ) => {
+	gulp.watch( `${ PATH.appRoot.replace( /\\/g , '/' ) }/${ PATH.SRC.SERVER }/**/*` ).on( 'all' , ( evt , path , stats ) => {
 		async function tmp () {
 			await server( path ) ; 
 			browserSync.reload() ; 

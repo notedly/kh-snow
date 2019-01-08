@@ -6,7 +6,6 @@ import lib from './watch/lib' ;
 import serverSet from './watch/server' ; 
 import view from './watch/view' ; 
 
-// const watch = gulp.parallel( scss , js , lib , view , serverSet  ) ; 
-const watch = gulp.series( scss ) ; 
+const watch = gulp.parallel( scss , js , lib , view , serverSet ) ; 
 
 export default watch ; 
