@@ -1,4 +1,5 @@
 import gulp from 'gulp' ; 
+import wait from 'gulp-wait' ; 
 import sass from 'gulp-sass' ; 
 import Cache from 'gulp-file-cache' ; 
 import cleanCSS from 'gulp-clean-css' ; 
@@ -20,7 +21,9 @@ const scss = () => {
 			return new Promise ( resolve => {
 				gulp.src( `${ PATH.appRoot }/${ PATH.SRC.SCSS }/*.scss` )
 					.pipe( cache.filter() )
-					.pipe( sass() )
+					.pipe(wait(200))
+					.pipe( sass.sync().on( 'error' , sass.logError ) )
+					// .pipe( sass() )
 					.pipe( cache.cache() )
 					.pipe( gulp.dest( `${ PATH.appRoot }/${ PATH.SRC.CSS }` ) )
 					.on( 'finish' , () => {
