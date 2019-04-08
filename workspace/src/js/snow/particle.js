@@ -1,4 +1,5 @@
 import { Common } from "../common/common";
+import { LinkedList, Node } from "../common/LinkedList";
 
 class Particle {
   constructor(...args) {
@@ -52,7 +53,6 @@ class Particle {
   };
 
   update = mapObj => {
-    console.log("update in");
     mapObj.forEach((val, key) => {
       switch (key) {
         case "fallingDown":

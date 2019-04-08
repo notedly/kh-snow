@@ -2,14 +2,12 @@ import React , { Component } from 'react' ;
 import ReactDOM , { render } from 'react-dom' ; 
 import SnowContainer from './snow/SnowContainer' ;
 
-console.log( 'SnowContainer :', SnowContainer ) ;
-
 class WrapContainer extends Component {
 	constructor ( props ) {
 		super( props ) ; 
 	}
 	render () {
-		return ([
+		return (
 			<div className="opt">
 				<button className="startBtn">start</button>
 				<button className="stopBtn">stop</button>
@@ -35,7 +33,7 @@ class WrapContainer extends Component {
 					defaultValue="1"
 				/>
 			</div>
-		]) ; 
+		) ; 
 	}
 }
 
@@ -43,11 +41,15 @@ window.addEventListener( 'load' , () => {
 	render( <WrapContainer /> , document.body.querySelector( '#wrapBox' ) ) ; 
 
 	let winterSnow = new SnowContainer ;
-	winterSnow.add(document.body);
-	winterSnow.make();
+	winterSnow.init( { 
+		target : document.body, 
+		len : 100 ,
+		wind : 0 ,
+		speed : 0.5 ,
+	}) ;
 
 	document.querySelector(".startBtn").addEventListener("click", () => {
-		winterSnow.draw();
+		winterSnow.start();
 	});
 	
 	document.querySelector(".stopBtn").addEventListener("click", () => {
@@ -63,15 +65,15 @@ window.addEventListener( 'load' , () => {
 	});
 	
 	document.querySelector(".addBtn").addEventListener("click", () => {
-		winterSnow.addSnow(500);
+		winterSnow.addSnow(50);
 	});
 	
 	document.querySelector(".variance").addEventListener("input", e => {
-		winterSnow.changeValue("windVariance", e.target.value);		
+		winterSnow.change("windVariance", e.target.value);		
 	});
 	
 	document.querySelector(".speed").addEventListener("input", e => {
-		winterSnow.changeValue("speed", e.target.value);
+		winterSnow.change("speed", e.target.value);
 	});
 
 	
