@@ -1,4 +1,4 @@
-import { Common } from "../common/common";
+import { Comn } from "../common/Comn";
 import { LinkedList, Node } from "../common/LinkedList";
 import { Particle } from "./particle";
 
@@ -6,7 +6,7 @@ class Controller {
 	
 	constructor(){
 		this.bln = false ;
-		this.stopBln = false ;
+      this.stopBln = false ;
 	}
 	
 	start = () => {
@@ -14,7 +14,9 @@ class Controller {
 		this.bln = true ;
 		this.stopBln = false;
 		this.move() ;
-	}	// end of start
+   }	// end of start
+   
+   // get 
 
 	move = () => {
 		let { props } = this;
@@ -30,7 +32,14 @@ class Controller {
 
 			if (snow.y > props.h) {
 				if (!this.stopBln) {
-					snow.x = Common.rdm(	-Math.abs(snow.wind), snow.w + Math.abs(snow.wind)	);
+
+               if( snow.windVariance > 0 ) {
+                  snow.x = Comn.rdm( -Math.abs(snow.wind), snow.w );	
+               } else if( snow.windVariance < 0 ){
+                  snow.x = Comn.rdm(0, snow.w + Math.abs(snow.wind));
+               } else {
+                  snow.x = Comn.rdm(-Math.abs(snow.wind), snow.w + Math.abs(snow.wind));
+               }
 					let map = new Map();
 					map.set("fallingDown", snow.idx);
 					snow.update(map);
@@ -58,15 +67,14 @@ class Controller {
 		}, 10 ) ;
 	}	// end of clear
 
-	change = ( valueName, num ) => {
-		let { props } = this;
-		props[valueName] = num ;
-		// if( valueName === 'windVariance' ){
-			// console.log( 'props :', props ) ;
-			// console.log( 'num : ', num ) ;
-			// props.wind = props.ctx.canvas.height * num / 2  ;
-			// console.log( 'props.wind :', props.wind ) ;
-		// }
+	change = ( valueName, num ) => {      
+      let { props } = this;      
+		if( valueName === 'windVariance' ){
+         props.windVariance = +num ;
+         props.wind = (props.ctx.canvas.height * +num) / 2;
+      } else {
+         props[valueName] = num ;
+      }
 		let crntSnow = props.particles.head;
 		while (crntSnow.next !== null) {
 			let snow = crntSnow.value;
@@ -77,26 +85,43 @@ class Controller {
 		}
 	}	// end of update
 
-	delete = num => {
+	delete = deleteNum => {
+      
 		let { particles } = this.props;
-		let crntSnow = particles.head;
+      let crntSnow = particles.head;
+
+      let point = Math.floor( this.props.len / deleteNum );
+      // console.log( 'deleteNum :', deleteNum , 'point :', point ) ;
+
+      let count = 0 ;
+      // let i = 0, len = this.props.len ;
+
+      // for( ; i<len; i+=1 ){
+      //    if( len % point === 0 ) {
+      //       count ++ ;
+      //    }
+      //    if( count > deleteNum ) break ;
+      //    console.log( 'count :', count ) ;
+
+      // }
+
 		while (crntSnow.next !== null) {
-			if ( crntSnow.value.idx % num === 0 ) {
-				// 2-> 정적인 것을 동적으로 변경
+			if ( crntSnow.value.idx % point === 0 ) {
+            console.log( count ) ;
 				particles.removeAt(crntSnow.value);
-			}
+         }
+         count += 1; 
 			crntSnow = crntSnow.next;
-		}
+      }
+      
 	}	// end of delete
 	
 	add = num => {
-		console.log( 'add' ) ;
-		let { props } = this;
+      let { props } = this;
 		let i = props.len + 1,
 		len = props.len + num;
 		for (; i < len; i += 1) {
-			if( i === 130 ){
-			console.log( 'props :', props ) ;
+			if( i % 200 == 0 ){
 			}
 			props.particles.addToHead(new Particle(i, props));
 		}
