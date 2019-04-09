@@ -41,11 +41,12 @@ window.addEventListener( 'load' , () => {
 	render( <WrapContainer /> , document.body.querySelector( '#wrapBox' ) ) ; 
 
 	let winterSnow = new SnowContainer ;
-	winterSnow.init( { 
-		target : document.body, 
+	
+	winterSnow.init({ 
+		target : document.body , 
 		len : 100 ,
-		wind : 0 ,
-		speed : 0.5 ,
+		wind : 1 ,
+		speed : 0.3 ,
 	}) ;
 
 	document.querySelector(".startBtn").addEventListener("click", () => {
@@ -61,11 +62,11 @@ window.addEventListener( 'load' , () => {
 	});
 	
 	document.querySelector(".deleteBtn").addEventListener("click", () => {
-		winterSnow.delete();
+		winterSnow.delete( 2 );
 	});
 	
 	document.querySelector(".addBtn").addEventListener("click", () => {
-		winterSnow.addSnow(50);
+		winterSnow.add( 500 );
 	});
 	
 	document.querySelector(".variance").addEventListener("input", e => {
@@ -75,27 +76,5 @@ window.addEventListener( 'load' , () => {
 	document.querySelector(".speed").addEventListener("input", e => {
 		winterSnow.change("speed", e.target.value);
 	});
-
-	
-	// document.querySelector( '.startBtn' ).addEventListener( 'click' , () => {
-	// 	console.log( 'click in' ) ;
-	// 	winterSnow.start() ;
-	// }) ;
-
-	// document.querySelector( '.variance' ).addEventListener( 'input' , ( e ) => {
-	// 	winterSnow.change( e.target.value , 'wind' ) ;
-	// }) ;
-
-	// document.querySelector( '.speed' ).addEventListener( 'input' , ( e ) => {
-	// 	winterSnow.change( e.target.value , 'speed' ) ;
-	// }) ;
-
-	// document.querySelector( '.stopBtn' ).addEventListener( 'click' , () => {
-	// 	winterSnow.stop() ;
-	// }) ;
-
-	// document.querySelector( '.clearBtn' ).addEventListener( 'click' , () => {
-	// 	winterSnow.clear() ;
-	// }) ;
 
 }) ; 

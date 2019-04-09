@@ -23,29 +23,26 @@ class Controller {
 		let crntSnow = props.particles.head;
 	
 		while (crntSnow.next !== null) {
-		  let snow = crntSnow.value;
-		  snow.rotate += Math.random() * 0.045;
-		  snow.x += snow.size * 0.1 * snow.duration + snow.windVariance;
-		  snow.y += snow.size * snow.duration;
-	
-		  if (snow.y > props.h) {
-			if (!this.stopBln) {
-			  snow.x = Common.rdm(
-				-Math.abs(snow.wind),
-				snow.w + Math.abs(snow.wind)
-			  );
-			  let map = new Map();
-			  map.set("fallingDown", snow.idx);
-			  snow.update(map);
+			let snow = crntSnow.value;
+			snow.rotate += Math.random() * 0.045;
+			snow.x += snow.size * 0.1 * snow.duration + snow.windVariance;
+			snow.y += snow.size * snow.duration;
+
+			if (snow.y > props.h) {
+				if (!this.stopBln) {
+					snow.x = Common.rdm(	-Math.abs(snow.wind), snow.w + Math.abs(snow.wind)	);
+					let map = new Map();
+					map.set("fallingDown", snow.idx);
+					snow.update(map);
+				}
 			}
-		  }
-		  snow.draw();
-		  crntSnow = crntSnow.next;
+			snow.draw();
+			crntSnow = crntSnow.next;
 		}
 		if (this.bln) {
-		  requestAnimationFrame(this.move);
+			requestAnimationFrame(this.move);
 		}
-	};
+	}	// end of move
 
 	stop = () => {
 		this.stopBln = true;
@@ -58,11 +55,18 @@ class Controller {
 
 		setTimeout(() => {
 			props.ctx.clearRect( 0, 0, props.w , props.h ) ;
-		}, 10) ;
+		}, 10 ) ;
 	}	// end of clear
 
 	change = ( valueName, num ) => {
 		let { props } = this;
+		props[valueName] = num ;
+		// if( valueName === 'windVariance' ){
+			// console.log( 'props :', props ) ;
+			// console.log( 'num : ', num ) ;
+			// props.wind = props.ctx.canvas.height * num / 2  ;
+			// console.log( 'props.wind :', props.wind ) ;
+		// }
 		let crntSnow = props.particles.head;
 		while (crntSnow.next !== null) {
 			let snow = crntSnow.value;
@@ -73,30 +77,32 @@ class Controller {
 		}
 	}	// end of update
 
-	delete = () => {
+	delete = num => {
 		let { particles } = this.props;
 		let crntSnow = particles.head;
 		while (crntSnow.next !== null) {
-			if (crntSnow.value.idx % 2 === 0) {
+			if ( crntSnow.value.idx % num === 0 ) {
 				// 2-> 정적인 것을 동적으로 변경
 				particles.removeAt(crntSnow.value);
 			}
 			crntSnow = crntSnow.next;
 		}
-	  }; // end of delete
+	}	// end of delete
 	
-	  addSnow = num => {
+	add = num => {
+		console.log( 'add' ) ;
 		let { props } = this;
 		let i = props.len + 1,
 		len = props.len + num;
 		for (; i < len; i += 1) {
-			console.log( props ) ;
+			if( i === 130 ){
+			console.log( 'props :', props ) ;
+			}
 			props.particles.addToHead(new Particle(i, props));
 		}
 		props.len = props.len + num;
-	  }; // end of addSnow
+	}	// end of add
 
 }	// end of Controller
-
 
 export { Controller };

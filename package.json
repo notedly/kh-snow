@@ -4,6 +4,7 @@
   "description": "Gulp4 Default Server Setting",
   "main": "gulpfile.babel.js",
   "dependencies": {
+    "gulp": "^4.0.0",
     "react-color": "^2.14.1"
   },
   "devDependencies": {
