@@ -1,6 +1,6 @@
 import { Comn } from "../common/Comn";
 import { LinkedList, Node } from "../common/LinkedList";
-import { Particle } from "./particle";
+import { Particle } from "./snowParticle";
 
 class Controller {
 	
@@ -82,42 +82,10 @@ class Controller {
 			crntSnow = crntSnow.next;
 		}
 	}	// end of update
-
-	delete = deleteNum => {
-      
-		let { particles } = this.props;
-      let crntSnow = particles.head;
-
-      let point = Math.floor( this.props.len / deleteNum );
-      // console.log( 'deleteNum :', deleteNum , 'point :', point ) ;
-
-		let count = 0 ;
-		
-		console.log( 'point --------> :', point ) ;
-      let i = 0, len = this.props.len ;
-
-      // for( ; i<len; i+=1 ){
-      //    if( i % point === 0 ) {
-      //       count ++ ;
-		// 		console.log( 'count :', count , 'idx :', i )  ;
-      //    }
-      //    if( count >= deleteNum ) break ;
-      // }
-
-		// while (crntSnow.next !== null) {
-		// 	if ( crntSnow.value.idx % point === 0 ) {
-      //       console.log( 'count :', count ) ;
-		// 		particles.removeAt(crntSnow.value);
-      //    }
-      //    count += 1; 
-		// 	crntSnow = crntSnow.next;
-      // }
-      
-	}	// end of delete
 	
 	add = num => {
-      let { props } = this;
-		let i = props.len + 1
+      let { props } = this
+		,	 i = props.len
 		,	 len = props.len + num;
 		for ( ; i < len; i += 1 ) {
 			props.particles.addToHead(new Particle(i, props));
@@ -125,6 +93,20 @@ class Controller {
 		props.len = props.len + num;
 		console.log( props.particles ) ;
 	}	// end of add
+
+	delete = deleteNum => {
+      let { props } = this
+		,	 { particles } = props
+		,	 crntSnow = particles.head
+		,	 count = 0 ;
+		while (crntSnow.next !== null && count < deleteNum ) {
+			crntSnow.value.del = true ;
+			crntSnow = crntSnow.next;
+			particles.removeHead();			
+			count += 1; 
+		}
+		props.len = props.len - deleteNum ;
+	}	// end of delete
 
 }	// end of Controller
 

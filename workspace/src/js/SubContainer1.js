@@ -1,16 +1,16 @@
 import React , { Component } from 'react' ; 
 import ReactDOM , { render } from 'react-dom' ; 
-import SnowContainer from './snow/SnowContainer' ;
+import SnowWrapper from './snow/snowWrapper' ;
 
 /**
  * 체크리스트
- * [O] js 파일 분리 - SnowContainer , Particle , Controller
+ * [O] js 파일 분리 - SnowWrapper , Particle , Controller
  * [O] 컨트롤 speed 변경 후 눈 추가
  * [O] 컨트롤 wind 변경 후 눈 추가
  * [O] 바람의 강도에 따른 x 좌표 영역 수정 
- * [] delete 전달값 동적으로
+ * [O] delete 전달값 동적으로
  * [] button addEventListener 함수로 통합
- * [] 
+ * [] 서서히 사라지는 효과 
  * []
  */
 
@@ -30,7 +30,6 @@ class WrapContainer extends Component {
 				<input className="variance" type="range" min="-3" max="3" step="0.1" defaultValue="1.5" />
 				<h1>speed : <span className="numSpeed"></span></h1>
 				<input className="speed" type="range" min="-1" max="1" step="0.01" defaultValue="1" />
-				<button className="testBtn">test</button>
 			</div>
 		) ; 
 	}
@@ -39,13 +38,13 @@ class WrapContainer extends Component {
 window.addEventListener( 'load' , () => {
 	render( <WrapContainer /> , document.body.querySelector( '#wrapBox' ) ) ; 
 
-	let winterSnow = new SnowContainer ;
-	
+	let winterSnow = new SnowWrapper ;
 	winterSnow.init({ 
 		target : document.body , 
-		len : 100 ,
-		wind : 2 ,	// max : 3 , min : -3 
-		speed : 0.5 ,  // max : 1 , min : 0 
+		len : 300 ,	// 눈 갯수
+		size : 2 , // 사이즈 1 ~ 5
+		wind : 0.8 ,	// 바람 max : 3 , min : -3 
+		speed : 0.5 ,  // 속도 max : 1 , min : 0 
 	}) ;
 	
 	/**
@@ -71,7 +70,7 @@ window.addEventListener( 'load' , () => {
 	});
 	
 	document.querySelector(".deleteBtn").addEventListener("click", () => {
-		winterSnow.delete( 4 );
+		winterSnow.delete( 100 );
 	});
 	
 	document.querySelector(".addBtn").addEventListener("click", () => {
