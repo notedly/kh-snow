@@ -16,8 +16,6 @@ class Controller {
 		this.move() ;
    }	// end of start
    
-   // get 
-
 	move = () => {
 		let { props } = this;
 		props.ctx.clearRect(0, 0, props.w, props.h);
@@ -93,39 +91,39 @@ class Controller {
       let point = Math.floor( this.props.len / deleteNum );
       // console.log( 'deleteNum :', deleteNum , 'point :', point ) ;
 
-      let count = 0 ;
-      // let i = 0, len = this.props.len ;
+		let count = 0 ;
+		
+		console.log( 'point --------> :', point ) ;
+      let i = 0, len = this.props.len ;
 
       // for( ; i<len; i+=1 ){
-      //    if( len % point === 0 ) {
+      //    if( i % point === 0 ) {
       //       count ++ ;
+		// 		console.log( 'count :', count , 'idx :', i )  ;
       //    }
-      //    if( count > deleteNum ) break ;
-      //    console.log( 'count :', count ) ;
-
+      //    if( count >= deleteNum ) break ;
       // }
 
-		while (crntSnow.next !== null) {
-			if ( crntSnow.value.idx % point === 0 ) {
-            console.log( count ) ;
-				particles.removeAt(crntSnow.value);
-         }
-         count += 1; 
-			crntSnow = crntSnow.next;
-      }
+		// while (crntSnow.next !== null) {
+		// 	if ( crntSnow.value.idx % point === 0 ) {
+      //       console.log( 'count :', count ) ;
+		// 		particles.removeAt(crntSnow.value);
+      //    }
+      //    count += 1; 
+		// 	crntSnow = crntSnow.next;
+      // }
       
 	}	// end of delete
 	
 	add = num => {
       let { props } = this;
-		let i = props.len + 1,
-		len = props.len + num;
-		for (; i < len; i += 1) {
-			if( i % 200 == 0 ){
-			}
+		let i = props.len + 1
+		,	 len = props.len + num;
+		for ( ; i < len; i += 1 ) {
 			props.particles.addToHead(new Particle(i, props));
 		}
 		props.len = props.len + num;
+		console.log( props.particles ) ;
 	}	// end of add
 
 }	// end of Controller

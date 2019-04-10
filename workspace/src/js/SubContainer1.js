@@ -43,7 +43,7 @@ window.addEventListener( 'load' , () => {
 	
 	winterSnow.init({ 
 		target : document.body , 
-		len : 500 ,
+		len : 100 ,
 		wind : 2 ,	// max : 3 , min : -3 
 		speed : 0.5 ,  // max : 1 , min : 0 
 	}) ;
@@ -71,11 +71,11 @@ window.addEventListener( 'load' , () => {
 	});
 	
 	document.querySelector(".deleteBtn").addEventListener("click", () => {
-		winterSnow.delete( 47 );
+		winterSnow.delete( 4 );
 	});
 	
 	document.querySelector(".addBtn").addEventListener("click", () => {
-		winterSnow.add( 500 );
+		winterSnow.add( 100 );
 	});
 	
 	document.querySelector(".variance").addEventListener("input", e => {

@@ -64,6 +64,7 @@ class SnowContainer extends Controller{
 		for (; i < len; i += 1) {
 			props.particles.addToHead(new Particle(i, props));
 		}
+		console.log( 'start :', props.particles ) ;
    };  // end of make
 
 }
