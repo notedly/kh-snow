@@ -25,9 +25,6 @@ class SnowWrapper extends Controller{
 			del : false ,
 			particles: new LinkedList()
 		};     
-      
-      console.log( this.props ) ;
-
 	} // end of constructor
 
  	init = ( args ) => {
@@ -77,7 +74,6 @@ class SnowWrapper extends Controller{
 		for ( ; i < len; i += 1) {
 			props.particles.addToHead(new Particle(i, props));
 		}
-		console.log( 'start :', props.particles ) ;
    };  // end of make
 
 }

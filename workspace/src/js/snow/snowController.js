@@ -43,7 +43,11 @@ class Controller {
 					snow.update(map);
 				}
 			}
-			snow.draw();
+			if( snow.del ) {
+				snow.fadeOut( snow );
+			} else {
+				snow.draw();
+			}
 			crntSnow = crntSnow.next;
 		}
 		if (this.bln) {
@@ -91,7 +95,6 @@ class Controller {
 			props.particles.addToHead(new Particle(i, props));
 		}
 		props.len = props.len + num;
-		console.log( props.particles ) ;
 	}	// end of add
 
 	delete = deleteNum => {
@@ -101,8 +104,8 @@ class Controller {
 		,	 count = 0 ;
 		while (crntSnow.next !== null && count < deleteNum ) {
 			crntSnow.value.del = true ;
+			// particles.removeHead();
 			crntSnow = crntSnow.next;
-			particles.removeHead();			
 			count += 1; 
 		}
 		props.len = props.len - deleteNum ;

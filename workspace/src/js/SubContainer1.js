@@ -9,9 +9,7 @@ import SnowWrapper from './snow/snowWrapper' ;
  * [O] 컨트롤 wind 변경 후 눈 추가
  * [O] 바람의 강도에 따른 x 좌표 영역 수정 
  * [O] delete 전달값 동적으로
- * [] button addEventListener 함수로 통합
- * [] 서서히 사라지는 효과 
- * []
+ * [O] 서서히 사라지는 효과 
  */
 
 class WrapContainer extends Component {
@@ -41,10 +39,10 @@ window.addEventListener( 'load' , () => {
 	let winterSnow = new SnowWrapper ;
 	winterSnow.init({ 
 		target : document.body , 
-		len : 300 ,	// 눈 갯수
-		size : 2 , // 사이즈 1 ~ 5
+		len : 100 ,	// 눈 갯수
+		size : 5 , // 사이즈 1 ~ 5
 		wind : 0.8 ,	// 바람 max : 3 , min : -3 
-		speed : 0.5 ,  // 속도 max : 1 , min : 0 
+		speed : 0.1 ,  // 속도 max : 1 , min : 0 
 	}) ;
 	
 	/**
@@ -70,11 +68,11 @@ window.addEventListener( 'load' , () => {
 	});
 	
 	document.querySelector(".deleteBtn").addEventListener("click", () => {
-		winterSnow.delete( 100 );
+		winterSnow.delete( 200 );
 	});
 	
 	document.querySelector(".addBtn").addEventListener("click", () => {
-		winterSnow.add( 100 );
+		winterSnow.add( 300 );
 	});
 	
 	document.querySelector(".variance").addEventListener("input", e => {

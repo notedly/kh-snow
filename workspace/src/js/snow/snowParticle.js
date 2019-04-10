@@ -13,7 +13,7 @@ class Particle{
 		
 		this.size = Comn.rdm(2*props.size, 4*props.size);		
 		this.duration = this.size * this.speed * 0.1;
-		this.alpha = Comn.rdm(0.25, 0.75);
+		this.alpha = Comn.rdm(0.45, 0.75);
 		this.rotate = -Comn.rdm(3, 5);
 
 		if (idx % 4 === 0) this.rotate = -this.rotate;
@@ -44,10 +44,6 @@ class Particle{
 
 	draw = () => {
 		this.ctx.save();
-		if( this.del ) {
-			// console.log( 'del in' ) ;
-			// this.alpha -= 0.1 ;
-		}
 		this.ctx.translate(this.x, this.y);
 		this.ctx.rotate(this.rotate);
 		this.ctx.globalAlpha = this.alpha;
@@ -57,9 +53,33 @@ class Particle{
 			-this.size / 2,
 			this.size,
 			this.size
-		);
+			);
 		this.ctx.restore();
 	}	// end of draw
+
+	fadeOut = ( crntSnow ) => {
+		this.ctx.save();
+		this.alpha -= 0.01;
+		if( this.alpha < 0 ) {
+			this.alpha = 0 ;
+			// console.log( this.value ) ;
+			setTimeout(() => {
+				this.particles.removeHead();
+			}, 10) ;
+			// this.particles.removeAt( crntSnow );
+		}
+		this.ctx.translate(this.x, this.y);
+		this.ctx.rotate(this.rotate);
+		this.ctx.globalAlpha = this.alpha ;
+		this.ctx.drawImage(
+			this.img,
+			-this.size / 2,
+			-this.size / 2,
+			this.size,
+			this.size
+			);
+		this.ctx.restore();
+	}
 
 	update = mapObj => {
 		mapObj.forEach((val, key) => {
