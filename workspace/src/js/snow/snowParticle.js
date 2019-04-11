@@ -1,6 +1,5 @@
 import { Comn } from "../common/Comn";
 import { LinkedList, Node } from "../common/LinkedList";
-import { ControllerFunc } from "../controller/ControllerFunc";
 
 class Particle{
 	constructor(...args) {

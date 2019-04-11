@@ -58,13 +58,6 @@ class SnowWrapper extends ControllerFunc{
 		
 		window.addEventListener( 'resize', this.resize ) ;
 
-		// let Setting = new Setting ; 
-		// Setting.name()
-		// Setting.addNtm()
-		// Setting.addRange( -100 , 100 , 1 , controller.wind )
-		// Setting.addRange( -100 , 100 , 1 , controller.speed )
-		// Setting.addRange( -100 , 100 , 1 , controller.size )
-
 	}	// end of init
 
 	resize = () => {

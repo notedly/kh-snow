@@ -71,7 +71,7 @@ class ControllerFunc {
 		}, 10 ) ;
 	}	// end of clear
 
-	change = ( valueName, num ) => {      
+	change = ( valueName, num ) => {     
       let { props } = this;      
 		if( valueName === 'windVariance' ){
          props.windVariance = +num ;
@@ -114,21 +114,5 @@ class ControllerFunc {
 	}	// end of delete
 
 }	// end of ControllerFunc
-
-
-// class Setting {
-// 	cons
-	
-// 	setName ( name ) {
-// 		 this.name = name 
-// 	}
-// 	addBtn ( opt ) { // name , handler
-// 		 return <button onClick={ handler } />
-// 	}
-// 	addRange () { // ???
-// 		 return <input type="range" min={} max={} step={} input={ handler } />
-// 	}
-
-// }
 
 export { ControllerFunc };
