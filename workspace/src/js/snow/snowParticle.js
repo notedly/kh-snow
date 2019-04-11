@@ -53,7 +53,7 @@ class Particle{
 			-this.size / 2,
 			this.size,
 			this.size
-			);
+		);
 		this.ctx.restore();
 	}	// end of draw
 
@@ -62,11 +62,9 @@ class Particle{
 		this.alpha -= 0.01;
 		if( this.alpha < 0 ) {
 			this.alpha = 0 ;
-			// console.log( this.value ) ;
 			setTimeout(() => {
 				this.particles.removeHead();
 			}, 10) ;
-			// this.particles.removeAt( crntSnow );
 		}
 		this.ctx.translate(this.x, this.y);
 		this.ctx.rotate(this.rotate);
@@ -77,9 +75,9 @@ class Particle{
 			-this.size / 2,
 			this.size,
 			this.size
-			);
+		);
 		this.ctx.restore();
-	}
+	}	// end of fadeOut
 
 	update = mapObj => {
 		mapObj.forEach((val, key) => {

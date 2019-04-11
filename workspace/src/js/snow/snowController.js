@@ -11,6 +11,7 @@ class Controller {
 	
 	start = () => {
 		if( this.bln ) return ;
+		console.log( 'start' ) ;
 		this.bln = true ;
 		this.stopBln = false;
 		this.move() ;
@@ -30,7 +31,6 @@ class Controller {
 
 			if (snow.y > props.h) {
 				if (!this.stopBln) {
-
                if( snow.windVariance > 0 ) {
                   snow.x = Comn.rdm( -Math.abs(snow.wind), snow.w );	
                } else if( snow.windVariance < 0 ){
@@ -56,7 +56,9 @@ class Controller {
 	}	// end of move
 
 	stop = () => {
+		// this.bln = false ;
 		this.stopBln = true;
+		console.log( 'stop' ) ;
 	}	// end of stop
 
 	clear = () => {

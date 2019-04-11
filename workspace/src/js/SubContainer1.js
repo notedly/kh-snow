@@ -9,10 +9,10 @@ import SnowWrapper from './snow/snowWrapper' ;
  * [O] 컨트롤 wind 변경 후 눈 추가
  * [O] 바람의 강도에 따른 x 좌표 영역 수정 
  * [O] delete 전달값 동적으로
- * [O] 서서히 사라지는 효과 
+ * [O] 서서히 사라지는 효과
  */
 
-class WrapContainer extends Component {
+ class WrapContainer extends Component {
 	constructor ( props ) {
 		super( props ) ; 
 	}
