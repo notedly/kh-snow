@@ -33,6 +33,8 @@ import SnowWrapper from './snow/snowWrapper' ;
 	}
 }
 
+// 컨트롤 
+
 window.addEventListener( 'load' , () => {
 	render( <WrapContainer /> , document.body.querySelector( '#wrapBox' ) ) ; 
 

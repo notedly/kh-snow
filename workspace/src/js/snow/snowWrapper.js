@@ -1,9 +1,9 @@
 import { LinkedList, Node } from "../common/LinkedList";
 import { Comn } from "../common/Comn";
-import { Particle } from "./snowParticle";
-import { Controller } from "./snowController";
+import { Particle } from "../snow/snowParticle";
+import { ControllerFunc } from "../controller/controllerFunc";
 
-class SnowWrapper extends Controller{
+class SnowWrapper extends ControllerFunc{
 	constructor() {
 		super();
 		let ctx = document.createElement("canvas").getContext("2d");
@@ -57,6 +57,13 @@ class SnowWrapper extends Controller{
 		this.make() ;
 		
 		window.addEventListener( 'resize', this.resize ) ;
+
+		// let Setting = new Setting ; 
+		// Setting.name()
+		// Setting.addNtm()
+		// Setting.addRange( -100 , 100 , 1 , controller.wind )
+		// Setting.addRange( -100 , 100 , 1 , controller.speed )
+		// Setting.addRange( -100 , 100 , 1 , controller.size )
 
 	}	// end of init
 

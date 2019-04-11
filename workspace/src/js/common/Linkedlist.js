@@ -6,7 +6,7 @@ function LinkedList() {
 function Node(value, next, prev) {
 	this.value = value;
 	this.next = next;
-	this.prev = prev;
+ 	this.prev = prev;
 }
   
 LinkedList.prototype.addToHead = function(value) {

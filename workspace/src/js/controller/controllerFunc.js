@@ -1,8 +1,8 @@
 import { Comn } from "../common/Comn";
 import { LinkedList, Node } from "../common/LinkedList";
-import { Particle } from "./snowParticle";
+import { Particle } from "../snow/snowParticle";
 
-class Controller {
+class ControllerFunc {
 	
 	constructor(){
 		this.bln = false ;
@@ -65,7 +65,7 @@ class Controller {
 		let { props } = this ;
 		this.bln = false ;
 		this.stopBln = false ;
-
+		
 		setTimeout(() => {
 			props.ctx.clearRect( 0, 0, props.w , props.h ) ;
 		}, 10 ) ;
@@ -113,6 +113,22 @@ class Controller {
 		props.len = props.len - deleteNum ;
 	}	// end of delete
 
-}	// end of Controller
+}	// end of ControllerFunc
 
-export { Controller };
+
+// class Setting {
+// 	cons
+	
+// 	setName ( name ) {
+// 		 this.name = name 
+// 	}
+// 	addBtn ( opt ) { // name , handler
+// 		 return <button onClick={ handler } />
+// 	}
+// 	addRange () { // ???
+// 		 return <input type="range" min={} max={} step={} input={ handler } />
+// 	}
+
+// }
+
+export { ControllerFunc };
