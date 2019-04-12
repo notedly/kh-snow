@@ -101,10 +101,28 @@ class Particle{
 					this.speed = val;
 					this.duration = this.size * this.speed * 0.1;
 					if (this.idx % 100 === 0) {
-						this.duration = this.duration / 4;
+						// this.duration = this.duration / 4;
+						this.duration = this.size * this.speed * 0.1 / 4;
+							if( this.idx === 200 ){
+								console.log( '100 :', this.duration ) ;
+							}
 					} else if (this.idx % 10 === 0) {
 						this.duration = this.duration / 2.5;
 					}
+
+
+					/*
+					this.size = Comn.rdm(2*props.size, 4*props.size);		
+					this.duration = this.size * this.speed * 0.1;
+
+					if (idx % 100 === 0) {
+						this.size = Comn.rdm(30*props.size, 40*props.size);
+						this.duration = this.duration / 4;
+					} else if (idx % 10 === 0) {
+						this.size = Comn.rdm(4*props.size, 6*props.size);
+						this.duration = this.duration / 2.5;
+					}
+					 */
 					break;
 				default:
 			}

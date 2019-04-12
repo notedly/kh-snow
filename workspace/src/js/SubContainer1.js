@@ -23,7 +23,7 @@ import ControllerSetting from "./controller/constrollerSetting";
 		this.winterSnow = new SnowWrapper ;
 		this.winterSnow.init({ 
 			target : document.body , 
-			len : 100 ,	// 눈 갯수
+			len : 1000 ,	// 눈 갯수
 			size : 5 , // 사이즈 1 ~ 5
 			wind : 0.8 ,	// 바람 max : 3 , min : -3 
 			speed : 0.1 ,  // 속도 max : 1 , min : 0 
