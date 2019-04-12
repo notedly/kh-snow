@@ -15,6 +15,8 @@ class Particle{
 		this.alpha = Comn.rdm(0.45, 0.75);
 		this.rotate = -Comn.rdm(3, 5);
 
+		// let { x, y, size, dur, alpha  } = this ;
+
 		if (idx % 4 === 0) this.rotate = -this.rotate;
 
 		this.y = -Comn.rdm(this.size * 10, this.size * 100);

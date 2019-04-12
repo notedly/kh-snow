@@ -7,10 +7,13 @@ import ControllerSetting from "./controller/constrollerSetting";
  * [O] js 파일 분리 - SnowWrapper , Particle , Controller
  * [O] 컨트롤 speed 변경 후 눈 추가
  * [O] 컨트롤 wind 변경 후 눈 추가
- * [O] 바람의 강도에 따른 x 좌표 영역 수정 
+ * [O] 바람의 강도에 따른 x 좌표 영역 수정
  * [O] delete 전달값 동적으로
  * [O] 서서히 사라지는 효과
  * [O] 컨트롤 마크업 클래스 생성
+ * [] 눈의 속도를 제어할 경우 크기가 큰 눈의 속도가 제어가 안됨.
+ * [] this의 사용을 너무 많이 했다. this의 중복을 제거한다.
+ * [] 눈의 갯수가 80개 인데 100개를 삭제했을 경우 어떤 처리를 했는가
  */
 
  class WrapContainer extends Component {
@@ -30,6 +33,7 @@ import ControllerSetting from "./controller/constrollerSetting";
 	render () {
 		
 		let setting = new ControllerSetting ;
+		let { winterSnow } = this ;
 
 		return (
 			/**
@@ -42,19 +46,18 @@ import ControllerSetting from "./controller/constrollerSetting";
 			 * change : 값 변화하기 ( options: windVariance , speed )
 			 */
 			<div className="opt">
-				{setting.addBtn({ name : 'start' , callback : this.winterSnow.start })}
-				{setting.addBtn({ name : 'stop' , callback : this.winterSnow.stop })}
-				{setting.addBtn({ name : 'clear' , callback : this.winterSnow.clear })}
-				{setting.addBtn({ name : 'delete' , callback : () => this.winterSnow.delete( 200 ) })}
-				{setting.addBtn({ name : 'add' , callback : () => this.winterSnow.add( 300 ) })}
-				{setting.addRange({ name : 'windVariance' , callback : this.winterSnow.change , min : -3, max : 3, step : 0.1, value : 0.8 })}
-				{setting.addRange({ name : 'speed' , callback : this.winterSnow.change , min : -1, max : 1, step : 0.1, value : 0.1 })}
+				{setting.addBtn({ name : 'start' , callback : winterSnow.start })}
+				{setting.addBtn({ name : 'stop' , callback : winterSnow.stop })}
+				{setting.addBtn({ name : 'clear' , callback : winterSnow.clear })}
+				{setting.addBtn({ name : 'delete' , callback : () => winterSnow.delete( 200 ) })}
+				{setting.addBtn({ name : 'add' , callback : () => winterSnow.add( 300 ) })}
+				{setting.addRange({ name : 'windVariance' , callback : winterSnow.change , min : -3, max : 3, step : 0.1, value : 0.8 })}
+				{setting.addRange({ name : 'speed' , callback : winterSnow.change , min : -1, max : 1, step : 0.1, value : 0.1 })}
 			</div>
+
 		) ; 
 	}
 }
-
-// 컨트롤 
 
 window.addEventListener( 'load' , () => {
 	render( <WrapContainer /> , document.body.querySelector( '#wrapBox' ) ) ; 
