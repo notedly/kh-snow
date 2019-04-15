@@ -28,7 +28,6 @@ class ControllerFunc {
 			snow.rotate += Math.random() * 0.045;
 			snow.x += snow.size * 0.1 * snow.duration + snow.windVariance;
 			snow.y += snow.size * snow.duration;
-
 			if (snow.y > props.h) {
 				if (!this.stopBln) {
                if( snow.windVariance > 0 ) {
@@ -42,12 +41,21 @@ class ControllerFunc {
 					map.set("fallingDown", snow.idx);
 					snow.update(map);
 				}
-			}
+			}		
+
+			// delete 시 서서히 사라지는 효과 적용
 			if( snow.del ) {
-				snow.fadeOut( snow );
-			} else {
-				snow.draw();
+				snow.alpha -= 0.01 ;
+				if( snow.alpha < 0 ) {
+					snow.alpha = 0 ;
+					setTimeout(() => {
+						snow.particles.removeHead();
+					}, 10) ;
+				}
 			}
+
+			snow.draw();
+
 			crntSnow = crntSnow.next;
 		}
 		if (this.bln) {

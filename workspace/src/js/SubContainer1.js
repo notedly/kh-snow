@@ -13,7 +13,7 @@ import ControllerSetting from "./controller/constrollerSetting";
  * [O] 컨트롤 마크업 클래스 생성
  * [] 눈의 속도를 제어할 경우 크기가 큰 눈의 속도가 제어가 안됨.
  * [] this의 사용을 너무 많이 했다. this의 중복을 제거한다.
- * [] 눈의 갯수가 80개 인데 100개를 삭제했을 경우 어떤 처리를 했는가
+ * [O] 눈의 갯수가 80개 인데 100개를 삭제했을 경우 어떤 처리를 했는가
  */
 
  class WrapContainer extends Component {
@@ -26,7 +26,7 @@ import ControllerSetting from "./controller/constrollerSetting";
 			len : 1000 ,	// 눈 갯수
 			size : 5 , // 사이즈 1 ~ 5
 			wind : 0.8 ,	// 바람 max : 3 , min : -3 
-			speed : 0.1 ,  // 속도 max : 1 , min : 0 
+			speed : 0.3 ,  // 속도 max : 1 , min : 0 
 		}) ;
 
 	}
@@ -49,10 +49,10 @@ import ControllerSetting from "./controller/constrollerSetting";
 				{setting.addBtn({ name : 'start' , callback : winterSnow.start })}
 				{setting.addBtn({ name : 'stop' , callback : winterSnow.stop })}
 				{setting.addBtn({ name : 'clear' , callback : winterSnow.clear })}
-				{setting.addBtn({ name : 'delete' , callback : () => winterSnow.delete( 200 ) })}
+				{setting.addBtn({ name : 'delete' , callback : () => winterSnow.delete( 500 ) })}
 				{setting.addBtn({ name : 'add' , callback : () => winterSnow.add( 300 ) })}
 				{setting.addRange({ name : 'windVariance' , callback : winterSnow.change , min : -3, max : 3, step : 0.1, value : 0.8 })}
-				{setting.addRange({ name : 'speed' , callback : winterSnow.change , min : -1, max : 1, step : 0.1, value : 0.1 })}
+				{setting.addRange({ name : 'speed' , callback : winterSnow.change , min : -1, max : 1, step : 0.1, value : 0.3 })}
 			</div>
 
 		) ; 
